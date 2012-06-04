@@ -1,5 +1,5 @@
 === FPW Post Thumbnails ===
-Plugin URI: http://fw2s.com/themes-and-fpw-category-thumbnails/
+Plugin URI: http://fw2s.com/my-plugins/fpw-post-thumbnails/
 Contributors: frankpw
 Donate link: http://fw2s.com/payments-and-donations/
 Tags: post thumbnails,enable,support,themes
@@ -26,10 +26,9 @@ If the theme displays thumbnails for both the content and excerpts I would not r
 1. Options Page
 
 == Changelog ==
-= 1.0 =
+= 1.0.0 =
 * First version.
 * Nothing has changed!
 
 == Upgrade Notice ==
 Nothing to upgrade!
-

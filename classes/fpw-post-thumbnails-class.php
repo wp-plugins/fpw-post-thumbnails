@@ -661,15 +661,6 @@ class fpwPostThumbnails {
         
 		echo	'<table style="width:100%">';
 		
-		//echo	'<tr>';
-		//echo	'<td style="width: 30%; verical-align: middle">';
-		//echo	'<input type="checkbox" class="fpt-option-group" id="box-excerpt-enabled" name="excerpt_enabled" value="excerpt_enabled"';
-		//if ( $this->fptOptions[ 'excerpt' ][ 'enabled' ] ) 
-		//	echo	' checked';
-		//echo 	'></td>';
-		//echo	'<td style="verical-align: middle">enabled</td>';
-		//echo	'</tr>';
-		
 		echo	'<tr>';
 		echo	'<td style="width: 30%; verical-align: middle">';
 		echo	'<input type="text" size="7" maxlength="7" value="' . 
@@ -816,8 +807,6 @@ class fpwPostThumbnails {
  
     	echo	'</div>';
  
-		//echo	'</div>';
-
 		//	end of form
 		echo	'</form>';
  

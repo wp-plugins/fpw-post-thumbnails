@@ -16,9 +16,9 @@
 			$ok = update_option( 'fpw_post_thumbnails_options', $this->fptOptions );
 			if ( $ok ) {
 				$this->uninstallMaintenance();
-				echo __( 'Options updated successfully.', 'fpw-fct' );
+				echo __( 'Options updated successfully.', 'fpw-fpt' );
 			} else {
-				echo __( 'No changes detected. Nothing to update.');
+				echo __( 'No changes detected. Nothing to update.', 'fpw-fpt' );
 			}
 		} else {
 			echo __( 'Validation failed!', 'fpw-fpt' ) . ' ' . $resp;

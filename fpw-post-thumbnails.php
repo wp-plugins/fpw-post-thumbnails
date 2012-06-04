@@ -2,7 +2,7 @@
 /*
 Plugin Name: FPW Post Thumbnails
 Description: Manages post thumbnails for themes not supporting them.
-Plugin URI: http://fw2s.com/fpw-post-thumbnails-plugin/
+Plugin URI: http://fw2s.com/my-plugins/fpw-post-thumbnails/
 Version: 1.0.0
 Author: Frank P. Walentynowicz
 Author URI: http://fw2s.com/

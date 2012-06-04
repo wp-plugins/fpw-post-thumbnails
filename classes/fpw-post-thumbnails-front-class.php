@@ -37,7 +37,7 @@ class fpwPostThumbnails {
 		}
 	}
 	
-	//	tte functions
+	//	enable post thumbnails support and add image sizes
 	function enableThemeSupportForThumbnails() {
 		if ( !current_theme_supports( 'post-thumbnails' ) ) 
 			add_theme_support( 'post-thumbnails' );
@@ -45,6 +45,7 @@ class fpwPostThumbnails {
 		add_image_size( 'excerpt-thumbnail', $this->fptOptions[ 'excerpt' ][ 'width' ], $this->fptOptions[ 'excerpt' ][ 'height' ], false );
 	}
 
+	//	thumbnail for content filter
 	function fptContent( $content ) {
 		global $post;
 		
@@ -63,7 +64,6 @@ class fpwPostThumbnails {
     		margin-bottom: <?php echo $this->fptOptions[ 'content' ][ 'margin_bottom' ] ?>px;
     		margin-right: <?php echo $this->fptOptions[ 'content' ][ 'margin_right' ] ?>px;
     		width: <?php echo $this->fptOptions[ 'content' ][ 'width' ] ?>px;
-    		/* height: <?php echo $this->fptOptions[ 'content' ][ 'height' ] ?>px; */
 		<?php
     	if ( $this->fptOptions[ 'content' ][ 'border' ] ) {
 		?>
@@ -110,6 +110,7 @@ class fpwPostThumbnails {
 		return $pic . $content;
 	}
 	
+	//	thumbnail for excerpt filter
 	function fptExcerpt( $excerpt ) {
 		global $post;
 		
@@ -128,7 +129,6 @@ class fpwPostThumbnails {
     		margin-bottom: <?php echo $this->fptOptions[ 'excerpt' ][ 'margin_bottom' ] ?>px;
     		margin-right: <?php echo $this->fptOptions[ 'excerpt' ][ 'margin_right' ] ?>px;
     		width: <?php echo $this->fptOptions[ 'excerpt' ][ 'width' ] ?>px;
-    		/* height: <?php echo $this->fptOptions[ 'excerpt' ][ 'height' ] ?>px; */
 		<?php
     	if ( $this->fptOptions[ 'excerpt' ][ 'border' ] ) {
 		?>
