@@ -226,7 +226,7 @@ class fpwPostThumbnails {
 		$current = get_site_transient( 'update_plugins' );
 		if ( !isset( $current -> response[ $file ] ) ) 
 			return false;
-		$url = "http://fw2s.com/fpwposthumbsupdate.txt";
+		$url = "http://fw2s.com/fpwpostthumbsupdate.txt";
 		$update = wp_remote_fopen( $url );
 		echo '<tr class="plugin-update-tr"><td></td><td></td><td class="plugin-update"><div class="update-message">' . 
 			'<img class="alignleft" src="' . $this->fptUrl . '/images/Thumbs_Up.png" width="64">' . $update . '</div></td></tr>';
