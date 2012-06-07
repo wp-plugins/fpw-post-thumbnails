@@ -10,7 +10,7 @@ Stable tag: 1.0.0
 Enables theme support for post thumbnails if the current theme does not provide it. And more...
 
 == Description ==
-There are many beautiful themes not providing any support for *post thumbnails* ( now called *featured images* ). Some themes provide such support but do not display them. Then we have three choices. First is to find another theme supporting and displaying thumbnails, second - forget about thumbnails, and the third is to get our hands dirty. The last one requires modifications to the current theme's files ( not very elegant and practical as the next theme's upgrade will wipe out those modifications ) or at least creating a child theme. **FPW Post Thumbnails** plugin makes these choices obsolete. It will add support for thumnails, display them, and give you more control over their appearance. And what's most important it will not modify the current theme in any way. 
+There are many nice themes not providing any support for *post thumbnails* ( now called *featured images* ). Some themes provide such support but do not display them. Then we have three choices. First is to find another theme supporting and displaying thumbnails, second - forget about thumbnails, and the third is to get our hands dirty. The last one requires modifications to the current theme's files ( not very elegant and practical as the next theme's upgrade will wipe out those modifications ) or at least creating a child theme. **FPW Post Thumbnails** plugin makes these choices obsolete. It will add support for thumnails, display them, and give you more control over their appearance. And what's most important it will not modify the current theme in any way. 
 
 == Installation ==
 1. Download the latest zip file and extract the directory it contains.
@@ -26,9 +26,19 @@ If the theme displays thumbnails for both the content and excerpts I would not r
 1. Options Page
 
 == Changelog ==
+
 = 1.0.0 =
 * First version.
 * Nothing has changed!
 
+= 1.0.1 = 
+* Fixed typo causing distortion of plugin list by upgrade notice
+* Fixed **Get Language File** button not being displayed
+* Localized and minified JavaScript
+* Added check to prevent front end being loaded when both thumbnails for content and thumbnails for excerpt are not enabled 
+* Added missing elements of the help file
+* Added .pot file for translation
+* Added Polish language files ( .po and .mo )
+
 == Upgrade Notice ==
-Nothing to upgrade!
+Please upgrade!

@@ -40,7 +40,7 @@ jQuery( document ).ready( function( $ ) {
   			veml = $( '#excerpt-margin-left' ).attr( 'value' );
   			vemb = $( '#excerpt-margin-bottom' ).attr( 'value' );
   			vemr = $( '#excerpt-margin-right' ).attr( 'value' );
-			message_div.html( '<p><strong>Please wait...</strong></p>' ).load( fpw_fpt.ajaxurl, {
+			message_div.html( '<p><strong>' + wait_msg + '</strong></p>' ).load( fpw_fpt.ajaxurl, {
 				boxes:						barr,
 				content_width:				vcwidth,
 				content_height:				vcheight,
@@ -83,7 +83,7 @@ jQuery( document ).ready( function( $ ) {
 	if ( $( '#fpt-language' ).length ) {
 		$( '#fpt-language' ).click( function() {
 			message_div = $( '#fpt-message' );
-			message_div.html( '<p><strong>Please wait...</strong></p>' ).load( fpw_fpt.ajaxurl, {
+			message_div.html( '<p><strong>' + wait_msg + '</strong></p>' ).load( fpw_fpt.ajaxurl, {
 				action:		'fpw_pt_language'
 			}).delay(750);
   			$('#fpt-message').fadeIn(1500).delay(4000).fadeOut(1500);

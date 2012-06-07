@@ -1,5 +1,10 @@
 <?php
 		//	AJAX request handler for Get Language File button
+
+		//	prevent direct access
+		if ( preg_match( '#' . basename(__FILE__) . '#', $_SERVER[ 'PHP_SELF' ] ) )  
+			die( "Direct access to this script is forbidden!" );
+
 		if ( 'not_exist' == $this->translationStatus ) {
 			$m = __( 'Language file for this version is not yet available.', 'fpw-fpt' );
 		} elseif ( 'installed' == $this->translationStatus ) {

@@ -1,4 +1,8 @@
 <?php
+//	prevent direct access
+if ( preg_match( '#' . basename(__FILE__) . '#', $_SERVER[ 'PHP_SELF' ] ) )  
+	die( "Direct access to this script is forbidden!" );
+
 //	plugin's main class
 class fpwPostThumbnails {
 	var	$fptOptions;
@@ -156,14 +160,7 @@ class fpwPostThumbnails {
 		$this->fptPage = add_theme_page( $page_title, $menu_title, 'manage_options', 
 							'fpw-post-thumbnails', array( &$this, 'fptSettings' ) );
 		
-/*		
-		print_r( $this->fptPage . '<br />' );
-		print_r( $this->fptPath );
-		die();
-*/		
 		add_action( 'admin_enqueue_scripts', array( &$this, 'enqueueScripts' ) );
-	
-		add_action( 'admin_enqueue_scripts', array( &$this, 'enqueuePointerScripts' ) );
 		add_action( 'load-' . $this->fptPage, array( &$this, 'fptHelp' ) );
 	}
 
@@ -171,37 +168,6 @@ class fpwPostThumbnails {
 	function enqueueScripts( $hook ) {
 		if ( $this->fptPage == $hook ) 
 			require_once $this->fptPath . '/scripts/enqueuescripts.php';
-	}
-	
-	//	enqueue pointer scripts
-	function enqueuePointerScripts( $hook ) {
-		if ( $this->fptPage == $hook ) 
-			require_once $this->fptPath . '/scripts/enqueuepointerscripts.php';
-	}
-
-	// 	AJAX handler for pointer
-	function custom_print_footer_scripts() {
-		$pointer = 'fpwfpt' . str_replace( '.', '', $this->fptVersion );
-    	$pointerContent  = '<h3>' . esc_js( __( "What's new in this version?", 'fpw-fpt' ) ) . '</h3>';
-		$pointerContent .= '<li style="margin-left:25px;margin-top:20px;margin-right:25px;list-style:square">' . __( 'Well... everything! This is an initial version.', 'fpw-fpt' ) . '</li>';
-		?>
-    	<script type="text/javascript">
-    	// <![CDATA[
-    		jQuery(document).ready( function($) {
-        		$('#fpt-settings-title').pointer({
-        			content: '<?php echo $pointerContent; ?>',
-        			position: 'top',
-            		close: function() {
-						jQuery.post( ajaxurl, {
-							pointer: '<?php echo $pointer; ?>',
-							action: 'dismiss-wp-pointer'
-						});
-            		}
-				}).pointer('open');
-			});
-    	// ]]>
-    	</script>
-    	<?php
 	}
 	
 	//	contextual help for WordPress 3.3+
@@ -423,7 +389,9 @@ class fpwPostThumbnails {
 				'type="submit" name="submit-update" value=" ' . 
 				__( 'Update Options', 'fpw-fpt' ) . ' " /> ';
 		
-		if ( !( 'en_US' == $this->fptLocale ) && ( 'available' == $this->translationStatus ) ) 
+		if ( !( 'en_US' == $this->fptLocale ) && 
+				( ( 'available' == $this->translationStatus ) || 
+				( 'not_exist' == $this->translationStatus ) ) )  
 		
 			echo	'<input title="' . 
 					__( 'load language file for your version', 'fpw-fpt' ) . 
@@ -488,8 +456,7 @@ class fpwPostThumbnails {
         echo	'<div class="postbox">';
         
 		echo	'<h3 style="cursor:default; background-color: #F1F1F1; background-image: -moz-linear-gradient(center top , #F9F9F9, #CCCCCC);">' . 
-				__( 'Thumbnails for Content', 'fpw-fpt' ) . ' ' . 
-				__( 'enabled:', 'fpw-fpt' ) . ' <input type="checkbox" class="fpt-option-group" ' . 
+				__( 'Thumbnails for Content enabled:', 'fpw-fpt' ) . ' <input type="checkbox" class="fpt-option-group" ' . 
 				'id="box-content-enabled" name="content_enabled" value="content_enabled"';
 		if ( $this->fptOptions[ 'content' ][ 'enabled' ] ) 
 		echo	' checked';
@@ -650,8 +617,7 @@ class fpwPostThumbnails {
         echo	'<div class="postbox">';
         
 		echo	'<h3 style="cursor:default;background-color: #F1F1F1; background-image: -moz-linear-gradient(center top , #F9F9F9, #CCCCCC);">' . 
-				__( 'Thumbnails for Excerpt', 'fpw-fpt' ) . ' ' .
-				__( 'enabled:', 'fpw-fpt' ) . ' <input type="checkbox" class="fpt-option-group" ' . 
+				__( 'Thumbnails for Excerpt enabled:', 'fpw-fpt' ) . ' <input type="checkbox" class="fpt-option-group" ' . 
 				'id="box-excerpt-enabled" name="excerpt_enabled" value="excerpt_enabled"';
 		if ( $this->fptOptions[ 'excerpt' ][ 'enabled' ] ) 
 		echo	' checked';
