@@ -30,7 +30,7 @@ If the theme displays thumbnails for both the content and excerpts I would not r
 == Changelog ==
 
 = 1.0.2 =
-* Addedd copy between panels
+* Added copy between panels
 * Changed data entry validation
 
 = 1.0.1 = 
