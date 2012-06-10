@@ -58,8 +58,10 @@ class fpwPostThumbnails {
 		add_action( 'admin_menu', array( &$this, 'adminMenu' ) );
 		
 		//	AJAX group of actions
-		add_action( 'wp_ajax_fpw_pt_language', array( &$this, 'fpw_pt_language_ajax' ) );
 		add_action( 'wp_ajax_fpw_pt_update', array( &$this, 'fpw_pt_update_ajax' ) );
+		add_action( 'wp_ajax_fpw_pt_language', array( &$this, 'fpw_pt_language_ajax' ) );
+		add_action( 'wp_ajax_fpw_pt_copy_right', array( &$this, 'fpw_pt_copy_right_ajax' ) );
+		add_action( 'wp_ajax_fpw_pt_copy_left', array( &$this, 'fpw_pt_copy_left_ajax' ) );
 
 		add_action( 'after_plugin_row_fpw-post-thumbnails/fpw-post-thumbnails.php', array( &$this, 'afterPluginMeta' ), 10, 2 );
 
@@ -175,6 +177,12 @@ class fpwPostThumbnails {
 		require_once $this->fptPath . '/help/fpthelp.php';
 	}
 	
+	// AJAX wrapper to perform options update
+	function fpw_pt_update_ajax() {
+		if ( defined( 'DOING_AJAX' ) && DOING_AJAX )
+			require_once $this->fptPath . '/ajax/fptupdate.php';
+	}
+
 	// AJAX wrapper to perform translation file loading
 	function fpw_pt_language_ajax() {
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX )
@@ -182,9 +190,15 @@ class fpwPostThumbnails {
 	}
 
 	// AJAX wrapper to perform options update
-	function fpw_pt_update_ajax() {
+	function fpw_pt_copy_right_ajax() {
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX )
-			require_once $this->fptPath . '/ajax/fptupdate.php';
+			require_once $this->fptPath . '/ajax/fptcopyright.php';
+	}
+
+	// AJAX wrapper to perform options update
+	function fpw_pt_copy_left_ajax() {
+		if ( defined( 'DOING_AJAX' ) && DOING_AJAX )
+			require_once $this->fptPath . '/ajax/fptcopyleft.php';
 	}
 
 	//	add update information after plugin meta
@@ -292,61 +306,116 @@ class fpwPostThumbnails {
 		$this->fptOptions[ 'content' ][ 'position' ] = $p[ 'content_position' ];
 		$this->fptOptions[ 'excerpt' ][ 'position' ] = $p[ 'excerpt_position' ];
 			
-		$response = '';
-		$valid = true;
-		
 		foreach ( $valuesToCheck as $val ) {
 			$this->fptOptions[ 'content' ][ $val ] = $p[ 'content_' . $val ];
 			$this->fptOptions[ 'excerpt' ][ $val ] = $p[ 'excerpt_' . $val ]; 
-			
-			if ( !ctype_digit( (string) $p[ 'content_' . $val ] ) ) 
-				$valid = false;
-			if ( !ctype_digit( (string) $p[ 'excerpt_' . $val ] ) )
-				$valid = false;
 		}
-		
-		if ( !$valid )  
-			$response = __( 'Non-numeric characters in one or more numeric fields!', 'fpw-fpt' );
-		
-		$valid = true;
 		
 		foreach( $colorsToCheck as $col ) {
 			$this->fptOptions[ 'content' ][ $col ] = $p[ 'content_' . $col ];
 			$this->fptOptions[ 'excerpt' ][ $col ] = $p[ 'excerpt_' . $col ];
-			
-			if ( !( 7 == strlen( $p[ 'content_' . $col ] ) ) || 
-				 !( '#' == substr( $p[ 'content_' . $col ], 0, 1 ) ) )
+		}
+		
+		$response = '';
+		$valid = true;
+		
+		foreach ( $valuesToCheck as $val ) {
+			if ( !ctype_digit( (string) $p[ 'content_' . $val ] ) ) { 
+				$response = __( 'In Content panel field', 'fpw-fpt' ) . ' "' . 
+							str_replace( '_', '-', $val ) . '" ' . 
+							__( 'contains non-numeric characters.', 'fpw-fpt' );
 				$valid = false;
-
-			if ( !( 7 == strlen( $p[ 'excerpt_' . $col ] ) ) || 
-				 !( '#' == substr( $p[ 'excerpt_' . $col ], 0, 1 ) ) )
+				break;
+			}
+			if ( !ctype_digit( (string) $p[ 'excerpt_' . $val ] ) ) {
+				$response = __( 'In Excerpt panel field', 'fpw-fpt' ) . ' "' . 
+							str_replace( '_', '-', $val ) . '" ' . 
+							__( 'contains non-numeric characters.', 'fpw-fpt' );
 				$valid = false;
-
-			if ( $valid ) {
-				$ac = str_split( $p[ 'content_' . $col ] );
-				$ae = str_split( $p[ 'excerpt_' . $col ] );
-			
-				for ( $i = 1; $i < 7; $i++ ) 
-					if ( !in_array( $ac[ $i ], $matches ) )
-						$valid = false;
-
-				for ( $i = 1; $i < 7; $i++ ) 
-					if ( !in_array( $ae[ $i ], $matches ) )
-						$valid = false;
+				break;
 			}
 		}
 		
-		if ( !$valid ) 
-			$response = __( 'Illegal characters in one or more color fields!', 'fpw-fpt' );
-					
+		if ( !$valid )  
+			return $response;
+		
+		foreach( $colorsToCheck as $col ) {
+
+			if ( !( 7 == strlen( $p[ 'content_' . $col ] ) ) || 
+				 !( '#' == substr( $p[ 'content_' . $col ], 0, 1 ) ) ) {
+				$response = __( 'In Content panel field', 'fpw-fpt' ) . ' "' . 
+							str_replace( '_', '-', $col ) . '" ' . 
+							__( 'is not vaild.', 'fpw-fpt' );
+				break;
+			}
+
+			if ( !( 7 == strlen( $p[ 'excerpt_' . $col ] ) ) || 
+				 !( '#' == substr( $p[ 'excerpt_' . $col ], 0, 1 ) ) ) {
+				$response = __( 'In Excerpt panel field', 'fpw-fpt' ) . ' "' . 
+							str_replace( '_', '-', $col ) . '" ' . 
+							__( 'is not vaild.', 'fpw-fpt' );
+				break;
+			}
+
+			$ac = str_split( $p[ 'content_' . $col ] );
+			$ae = str_split( $p[ 'excerpt_' . $col ] );
+			
+			for ( $i = 1; $i < 7; $i++ ) 
+				if ( !in_array( $ac[ $i ], $matches ) ) {
+					$response = __( 'In Content panel field', 'fpw-fpt' ) . ' "' . 
+								str_replace( '_', '-', $col ) . '" ' . 
+								__( 'is not vaild.', 'fpw-fpt' );
+					break;
+				}
+
+			for ( $i = 1; $i < 7; $i++ ) 
+				if ( !in_array( $ae[ $i ], $matches ) ) {
+					$response = __( 'In Excerpt panel field', 'fpw-fpt' ) . ' "' . 
+								str_replace( '_', '-', $col ) . '" ' . 
+								__( 'is not vaild.', 'fpw-fpt' );
+					break;
+				}			
+		}
+		
 		return $response;
 	} 
+	
+	//	copy values between panels
+	private function copyPanels( $where ) {
+		$valuesToCopy = array(
+			'enabled',
+			'width',
+			'height',
+			'position',
+			'border',
+			'border_radius',
+			'border_width',
+			'border_color',
+			'background_color',
+			'padding_top',
+			'padding_left',
+			'padding_bottom',
+			'padding_right',
+			'margin_top',
+			'margin_left',
+			'margin_bottom',
+			'margin_right'
+		);
+		$from 	= ( 'right' == $where ) ? 'content' : 'excerpt';
+		$to		= ( 'right' == $where ) ? 'excerpt' : 'content';
+		
+		foreach ( $valuesToCopy as $value )
+			$this->fptOptions[ $to ][ $value ] = $this->fptOptions[ $from ][ $value ];
+	}
 	
 	//	FPW Post Thumbnails - settings page
 	function fptSettings() {
 		
 		//	check if form was submited
-		if ( isset( $_POST[ 'submit-update' ] ) || isset( $_POST[ 'submit-language' ] ) ) {
+		if ( isset( $_POST[ 'submit-update' ] ) || 
+			 isset( $_POST[ 'submit-language' ] ) || 
+			 isset( $_POST[ 'submit-copy-right' ] ) ||
+			 isset( $_POST[ 'submit-copy-left' ] ) ) {
 			if ( !isset( $_POST[ 'fpw-fpt-nonce' ] ) ) 
 				die( '<br />&nbsp;<br /><p style="padding-left: 20px; color: red"><strong>' . 
 					 __( 'You did not send any credentials!', 'fpw-fpt' ) . '</strong></p>' );
@@ -356,14 +425,12 @@ class fpwPostThumbnails {
 
 			$resp = $this->fptValidateInput( $_POST );
 
-			if ( '' == $resp )
-				$updateOK = update_option( 'fpw_post_thumbnails_options', $this->fptOptions );
 		}
 		
 		//	HTML starts here
 		echo 	'<div class="wrap">';
 		
-		echo	'<div id="icon-options-general" class="icon32"></div><h2 id="fpt-settings-title">' . 
+		echo	'<div id="icon-themes" class="icon32"></div><h2 id="fpt-settings-title">' . 
 				__( 'FPW Post Thumbnails', 'fpw-fpt' ) . ' (' . 
 				$this->fptVersion . ')</h2>';
 
@@ -424,6 +491,7 @@ class fpwPostThumbnails {
 		if ( isset( $_POST[ 'submit-update' ] ) ) {
 			echo '<div id="fpt-message" class="updated fade" style="margin-bottom: 10px;"><p><strong>';
 			if ( '' == $resp ) {
+				$updateOK = update_option( 'fpw_post_thumbnails_options', $this->fptOptions );
 				if ( $updateOK ) {
 					echo __( 'Options updated successfully.', 'fpw-fpt' );				
 				} else {
@@ -451,6 +519,27 @@ class fpwPostThumbnails {
 			echo '</strong></p></div>';
 		}			
 
+		if ( isset( $_POST[ 'submit-copy-right' ] ) ) { 
+			if ( '' == $resp ) {
+				$this->copyPanels( 'right' );
+				$m = __( 'Values copied from the left to the right panel.', 'fpw-fpt' );
+			} else {
+				$m = $resp;			
+			}
+			echo '<div id="fpt-message" class="updated fade" style="margin-bottom: 10px;"><p><strong>' . $m;
+			echo '</strong></p></div>';
+		
+		} elseif ( isset( $_POST[ 'submit-copy-left' ] ) ) {
+			if ( '' == $resp ) {
+				$this->copyPanels( 'left' );
+				$m = __( 'Values copied from the right to the left panel.', 'fpw-fpt' );
+			} else {
+				$m = $resp;
+			}
+			echo '<div id="fpt-message" class="updated fade" style="margin-bottom: 10px;"><p><strong>' . $m;
+			echo '</strong></p></div>';
+		}
+		
 		echo	'<div class="metabox-holder" style="width:49%; float:left; margin-right:10px;">';
  
         echo	'<div class="postbox">';
@@ -460,7 +549,11 @@ class fpwPostThumbnails {
 				'id="box-content-enabled" name="content_enabled" value="content_enabled"';
 		if ( $this->fptOptions[ 'content' ][ 'enabled' ] ) 
 		echo	' checked';
-		echo	'></h3>';
+		echo	'><span style="float: right;">' . 
+				'<input type="submit" title="' . __( 'copy all values to the right panel', 'fpw-fpt' ) . 
+				'" id="fpt-copy-right" name="submit-copy-right" value="' . 
+				__( 'Copy', 'fpw-fpt' ) . ' &raquo;&raquo;' . 
+				'" class="button-secondary fpt-submit" style="position: relative; top: -5px;"></span></h3>';
         
 		echo	'<div class="inside" style="padding:0px 6px 0px 6px;">';
 		
@@ -621,7 +714,11 @@ class fpwPostThumbnails {
 				'id="box-excerpt-enabled" name="excerpt_enabled" value="excerpt_enabled"';
 		if ( $this->fptOptions[ 'excerpt' ][ 'enabled' ] ) 
 		echo	' checked';
-		echo	'></h3>';
+		echo	'><span style="float: right;">' . 
+				'<input type="submit" title="' . __( 'copy all values to the left panel', 'fpw-fpt' ) . 
+				'" id="fpt-copy-left" name="submit-copy-left" value="&laquo;&laquo; ' . 
+				__( 'Copy', 'fpw-fpt' ) . 
+				'" class="button-secondary fpt-submit" style="position: relative; top: -5px;"></span></h3>';
     	
 		echo	'<div class="inside" style="padding:0px 6px 0px 6px;">';
         

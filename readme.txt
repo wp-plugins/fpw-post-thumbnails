@@ -29,9 +29,9 @@ If the theme displays thumbnails for both the content and excerpts I would not r
 
 == Changelog ==
 
-= 1.0.0 =
-* First version.
-* Nothing has changed!
+= 1.0.2 =
+* Addedd copy between panels
+* Changed data entry validation
 
 = 1.0.1 = 
 * Fixed typo causing distortion of plugin list by upgrade notice
@@ -41,6 +41,10 @@ If the theme displays thumbnails for both the content and excerpts I would not r
 * Added missing elements of the help file
 * Added .pot file for translation
 * Added Polish language files ( .po and .mo )
+
+= 1.0.0 =
+* First version.
+* Nothing has changed!
 
 == Upgrade Notice ==
 Please upgrade!
