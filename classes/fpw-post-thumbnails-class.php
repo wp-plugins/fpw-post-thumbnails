@@ -426,7 +426,63 @@ class fpwPostThumbnails {
 			$resp = $this->fptValidateInput( $_POST );
 
 		}
-		
+
+		//	stylesheet for preview
+	    ?>
+    	<style type="text/css">
+    	<!--
+		.attachment-thumbnail-content,
+		.wp-post-image-content {
+    		float: <?php echo $this->fptOptions[ 'content' ][ 'position' ] ?>;
+    		padding-top: <?php echo $this->fptOptions[ 'content' ][ 'padding_top' ] ?>px;
+    		padding-left: <?php echo $this->fptOptions[ 'content' ][ 'padding_left' ] ?>px;
+    		padding-bottom: <?php echo $this->fptOptions[ 'content' ][ 'padding_bottom' ] ?>px;
+			padding-right: <?php echo $this->fptOptions[ 'content' ][ 'padding_right' ] ?>px;
+    		margin-top: <?php echo $this->fptOptions[ 'content' ][ 'margin_top' ] ?>px;
+    		margin-left: <?php echo $this->fptOptions[ 'content' ][ 'margin_left' ] ?>px;
+    		margin-bottom: <?php echo $this->fptOptions[ 'content' ][ 'margin_bottom' ] ?>px;
+    		margin-right: <?php echo $this->fptOptions[ 'content' ][ 'margin_right' ] ?>px;
+    		width: <?php echo $this->fptOptions[ 'content' ][ 'width' ] ?>px;
+		<?php
+    	if ( $this->fptOptions[ 'content' ][ 'border' ] ) {
+		?>
+        	background-color: <?php echo $this->fptOptions[ 'content' ][ 'background_color' ] ?>;
+        	border: <?php echo $this->fptOptions[ 'content' ][ 'border_width' ] ?>px solid <?php echo $this->fptOptions[ 'content' ][ 'border_color' ] ?>;
+        	border-radius: <?php echo $this->fptOptions[ 'content' ][ 'border_radius' ] ?>px;
+        	-moz-border-radius: <?php echo $this->fptOptions[ 'content' ][ 'border_radius' ] ?>px;
+        	-webkit-border-radius: <?php echo $this->fptOptions[ 'content' ][ 'border_radius' ] ?>px;
+		<?php	
+		}
+		?>
+		}
+		.attachment-thumbnail-excerpt,
+		.wp-post-image-excerpt {
+    		float: <?php echo $this->fptOptions[ 'excerpt' ][ 'position' ] ?>;
+    		padding-top: <?php echo $this->fptOptions[ 'excerpt' ][ 'padding_top' ] ?>px;
+    		padding-left: <?php echo $this->fptOptions[ 'excerpt' ][ 'padding_left' ] ?>px;
+    		padding-bottom: <?php echo $this->fptOptions[ 'excerpt' ][ 'padding_bottom' ] ?>px;
+			padding-right: <?php echo $this->fptOptions[ 'excerpt' ][ 'padding_right' ] ?>px;
+    		margin-top: <?php echo $this->fptOptions[ 'excerpt' ][ 'margin_top' ] ?>px;
+    		margin-left: <?php echo $this->fptOptions[ 'excerpt' ][ 'margin_left' ] ?>px;
+    		margin-bottom: <?php echo $this->fptOptions[ 'excerpt' ][ 'margin_bottom' ] ?>px;
+    		margin-right: <?php echo $this->fptOptions[ 'excerpt' ][ 'margin_right' ] ?>px;
+    		width: <?php echo $this->fptOptions[ 'excerpt' ][ 'width' ] ?>px;
+		<?php
+    	if ( $this->fptOptions[ 'excerpt' ][ 'border' ] ) {
+		?>
+        	background-color: <?php echo $this->fptOptions[ 'excerpt' ][ 'background_color' ] ?>;
+        	border: <?php echo $this->fptOptions[ 'excerpt' ][ 'border_width' ] ?>px solid <?php echo $this->fptOptions[ 'excerpt' ][ 'border_color' ] ?>;
+        	border-radius: <?php echo $this->fptOptions[ 'excerpt' ][ 'border_radius' ] ?>px;
+        	-moz-border-radius: <?php echo $this->fptOptions[ 'excerpt' ][ 'border_radius' ] ?>px;
+        	-webkit-border-radius: <?php echo $this->fptOptions[ 'excerp' ][ 'border_radius' ] ?>px;
+		<?php	
+		}
+		?>
+		}
+    	-->
+    	</style>
+    	<?php
+
 		//	HTML starts here
 		echo 	'<div class="wrap">';
 		
@@ -545,15 +601,28 @@ class fpwPostThumbnails {
         echo	'<div class="postbox">';
         
 		echo	'<h3 style="cursor:default; background-color: #F1F1F1; background-image: -moz-linear-gradient(center top , #F9F9F9, #CCCCCC);">' . 
-				__( 'Thumbnails for Content enabled:', 'fpw-fpt' ) . ' <input type="checkbox" class="fpt-option-group" ' . 
+				__( 'Content thumbnails enabled:', 'fpw-fpt' ) . ' <input type="checkbox" class="fpt-option-group" ' . 
 				'id="box-content-enabled" name="content_enabled" value="content_enabled"';
 		if ( $this->fptOptions[ 'content' ][ 'enabled' ] ) 
 		echo	' checked';
-		echo	'><span style="float: right;">' . 
-				'<input type="submit" title="' . __( 'copy all values to the right panel', 'fpw-fpt' ) . 
+		echo	'> <input type="submit" title="' . __( 'copy all values to the right panel', 'fpw-fpt' ) . 
 				'" id="fpt-copy-right" name="submit-copy-right" value="' . 
-				__( 'Copy', 'fpw-fpt' ) . ' &raquo;&raquo;' . 
-				'" class="button-secondary fpt-submit" style="position: relative; top: -5px;"></span></h3>';
+				__( 'Copy', 'fpw-fpt' ) . ' &raquo;' . 
+				'" class="button-secondary fpt-submit"> <input alt="#TB_inline?height=300&width=400&inlineId=fptContentPreviev" ' . 
+				'title="' . __( 'Content - Preview', 'fpw-fpt' ) . '" class="thickbox button-secondary" ' . 
+				'type="button" value="' . __( 'Preview', 'fpw-fpt' ) . '" />' . 
+				'</h3>';
+				
+		echo	'<div id="fptContentPreviev" class="thickbox" style="display: none;">';
+		echo	'<div class="entry"><img class="wp-post-image-content" src="' . 
+				$this->fptUrl . '/images/Thumbs_Up.png" /><p style="text-align: justify">Lorem ipsum dolor sit amet consectetuer ' . 
+				'nunc enim laoreet pellentesque augue. Vestibulum Vivamus lacus dis ' . 
+				'Nunc semper laoreet platea Pellentesque ultrices metus. Tincidunt ' . 
+				'ridiculus nec Lorem orci metus hac Nam Lorem nascetur orci. Sed et ' . 
+				'quis aliquet urna tortor ut neque nec elit nibh. At justo condimentum ' . 
+				'sit Aenean ac vitae aliquam quis adipiscing dolor. Nibh leo nibh ' . 
+				'aliquam laoreet elit convallis condimentum volutpat id consequat. Ut quis.</p>';
+		echo	'</div></div>';			
         
 		echo	'<div class="inside" style="padding:0px 6px 0px 6px;">';
 		
@@ -600,17 +669,17 @@ class fpwPostThumbnails {
 		echo	'<tr>';
 		echo	'<td style="width: 30%; verical-align: middle">';
 		echo	'<input type="text" size="7" maxlength="7" value="' . 
-					$this->fptOptions[ 'content' ][ 'border_radius' ] . '" name="content_border_radius" id="content-border-radius" class="content-border-radius-value" />';
+					$this->fptOptions[ 'content' ][ 'border_width' ] . '" name="content_border_width" id="content-border-width" class="content-border-width-value" />';
 		echo	' px</td>';
-		echo	'<td style="verical-align: middle">border-radius</td>';
+		echo	'<td style="verical-align: middle">border-width</td>';
 		echo	'</tr>';
 
 		echo	'<tr>';
 		echo	'<td style="width: 30%; verical-align: middle">';
 		echo	'<input type="text" size="7" maxlength="7" value="' . 
-					$this->fptOptions[ 'content' ][ 'border_width' ] . '" name="content_border_width" id="content-border-width" class="content-border-width-value" />';
+					$this->fptOptions[ 'content' ][ 'border_radius' ] . '" name="content_border_radius" id="content-border-radius" class="content-border-radius-value" />';
 		echo	' px</td>';
-		echo	'<td style="verical-align: middle">border-width</td>';
+		echo	'<td style="verical-align: middle">border-radius</td>';
 		echo	'</tr>';
 
 		echo	'<tr>';
@@ -644,11 +713,11 @@ class fpwPostThumbnails {
 		echo	'<tr>';
 		echo	'<td style="width: 30%; verical-align: middle">';
 		echo	'<input type="text" size="7" maxlength="7" value="' . 
-					$this->fptOptions[ 'content' ][ 'padding_left' ] . '" name="content_padding_left" id="content-padding-left" class="content-padding-left-value" />';
+					$this->fptOptions[ 'content' ][ 'padding_right' ] . '" name="content_padding_right" id="content-padding-right" class="content-padding-right-value" />';
 		echo	' px</td>';
-		echo	'<td style="verical-align: middle">padding-left</td>';
+		echo	'<td style="verical-align: middle">padding-right</td>';
 		echo	'</tr>';
-
+		
 		echo	'<tr>';
 		echo	'<td style="width: 30%; verical-align: middle">';
 		echo	'<input type="text" size="7" maxlength="7" value="' . 
@@ -660,11 +729,11 @@ class fpwPostThumbnails {
 		echo	'<tr>';
 		echo	'<td style="width: 30%; verical-align: middle">';
 		echo	'<input type="text" size="7" maxlength="7" value="' . 
-					$this->fptOptions[ 'content' ][ 'padding_right' ] . '" name="content_padding_right" id="content-padding-right" class="content-padding-right-value" />';
+					$this->fptOptions[ 'content' ][ 'padding_left' ] . '" name="content_padding_left" id="content-padding-left" class="content-padding-left-value" />';
 		echo	' px</td>';
-		echo	'<td style="verical-align: middle">padding-right</td>';
+		echo	'<td style="verical-align: middle">padding-left</td>';
 		echo	'</tr>';
-		
+
 		echo	'<tr>';
 		echo	'<td style="width: 30%; verical-align: middle">';
 		echo	'<input type="text" size="7" maxlength="7" value="' . 
@@ -676,11 +745,11 @@ class fpwPostThumbnails {
 		echo	'<tr>';
 		echo	'<td style="width: 30%; verical-align: middle">';
 		echo	'<input type="text" size="7" maxlength="7" value="' . 
-					$this->fptOptions[ 'content' ][ 'margin_left' ] . '" name="content_margin_left" id="content-margin-left" class="content-margin-left-value" />';
+					$this->fptOptions[ 'content' ][ 'margin_right' ] . '" name="content_margin_right" id="content-margin-right" class="content-margin-right-value" />';
 		echo	' px</td>';
-		echo	'<td style="verical-align: middle">margin-left</td>';
+		echo	'<td style="verical-align: middle">margin-right</td>';
 		echo	'</tr>';
-
+		
 		echo	'<tr>';
 		echo	'<td style="width: 30%; verical-align: middle">';
 		echo	'<input type="text" size="7" maxlength="7" value="' . 
@@ -692,11 +761,11 @@ class fpwPostThumbnails {
 		echo	'<tr>';
 		echo	'<td style="width: 30%; verical-align: middle">';
 		echo	'<input type="text" size="7" maxlength="7" value="' . 
-					$this->fptOptions[ 'content' ][ 'margin_right' ] . '" name="content_margin_right" id="content-margin-right" class="content-margin-right-value" />';
+					$this->fptOptions[ 'content' ][ 'margin_left' ] . '" name="content_margin_left" id="content-margin-left" class="content-margin-left-value" />';
 		echo	' px</td>';
-		echo	'<td style="verical-align: middle">margin-right</td>';
+		echo	'<td style="verical-align: middle">margin-left</td>';
 		echo	'</tr>';
-		
+
 		echo	'</table>';
 		        
 		echo	'</div>';
@@ -710,16 +779,25 @@ class fpwPostThumbnails {
         echo	'<div class="postbox">';
         
 		echo	'<h3 style="cursor:default;background-color: #F1F1F1; background-image: -moz-linear-gradient(center top , #F9F9F9, #CCCCCC);">' . 
-				__( 'Thumbnails for Excerpt enabled:', 'fpw-fpt' ) . ' <input type="checkbox" class="fpt-option-group" ' . 
+				__( 'Excerpt thumbnails enabled:', 'fpw-fpt' ) . ' <input type="checkbox" class="fpt-option-group" ' . 
 				'id="box-excerpt-enabled" name="excerpt_enabled" value="excerpt_enabled"';
 		if ( $this->fptOptions[ 'excerpt' ][ 'enabled' ] ) 
 		echo	' checked';
-		echo	'><span style="float: right;">' . 
-				'<input type="submit" title="' . __( 'copy all values to the left panel', 'fpw-fpt' ) . 
-				'" id="fpt-copy-left" name="submit-copy-left" value="&laquo;&laquo; ' . 
+		echo	'> <input type="submit" title="' . __( 'copy all values to the left panel', 'fpw-fpt' ) . 
+				'" id="fpt-copy-left" name="submit-copy-left" value="&laquo; ' . 
 				__( 'Copy', 'fpw-fpt' ) . 
-				'" class="button-secondary fpt-submit" style="position: relative; top: -5px;"></span></h3>';
-    	
+				'" class="button-secondary fpt-submit"> <input alt="#TB_inline?height=300&width=400&inlineId=fptExcerptPreviev" ' . 
+				'title="' . __( 'Excerpt - Preview', 'fpw-fpt' ) . '" class="thickbox button-secondary" ' . 
+				'type="button" value="' . __( 'Preview', 'fpw-fpt' ) . '" /></h3>';
+
+		echo	'<div id="fptExcerptPreviev" class="thickbox" style="display: none;">';
+		echo	'<div class="excerpt"><img class="wp-post-image-excerpt" src="' . 
+				$this->fptUrl . '/images/Thumbs_Up.png" /><p style="text-align: justify">Lorem ipsum dolor sit amet consectetuer ' . 
+				'nunc enim laoreet pellentesque augue. Vestibulum Vivamus lacus dis ' . 
+				'Nunc semper laoreet platea Pellentesque ultrices metus. Tincidunt ' . 
+				'ridiculus nec Lorem orci [...]</p>';
+		echo	'</div></div>';			
+        
 		echo	'<div class="inside" style="padding:0px 6px 0px 6px;">';
         
 		echo	'<table style="width:100%">';
@@ -765,17 +843,17 @@ class fpwPostThumbnails {
 		echo	'<tr>';
 		echo	'<td style="width: 30%; verical-align: middle">';
 		echo	'<input type="text" size="7" maxlength="7" value="' . 
-					$this->fptOptions[ 'excerpt' ][ 'border_radius' ] . '" name="excerpt_border_radius" id="excerpt-border-radius" class="excerpt-border-radius-value" />';
+					$this->fptOptions[ 'excerpt' ][ 'border_width' ] . '" name="excerpt_border_width" id="excerpt-border-width" class="excerpt-border-width-value" />';
 		echo	' px</td>';
-		echo	'<td style="verical-align: middle">border-radius</td>';
+		echo	'<td style="verical-align: middle">border-width</td>';
 		echo	'</tr>';
 
 		echo	'<tr>';
 		echo	'<td style="width: 30%; verical-align: middle">';
 		echo	'<input type="text" size="7" maxlength="7" value="' . 
-					$this->fptOptions[ 'excerpt' ][ 'border_width' ] . '" name="excerpt_border_width" id="excerpt-border-width" class="excerpt-border-width-value" />';
+					$this->fptOptions[ 'excerpt' ][ 'border_radius' ] . '" name="excerpt_border_radius" id="excerpt-border-radius" class="excerpt-border-radius-value" />';
 		echo	' px</td>';
-		echo	'<td style="verical-align: middle">border-width</td>';
+		echo	'<td style="verical-align: middle">border-radius</td>';
 		echo	'</tr>';
 
 		echo	'<tr>';
@@ -809,11 +887,11 @@ class fpwPostThumbnails {
 		echo	'<tr>';
 		echo	'<td style="width: 30%; verical-align: middle">';
 		echo	'<input type="text" size="7" maxlength="7" value="' . 
-					$this->fptOptions[ 'excerpt' ][ 'padding_left' ] . '" name="excerpt_padding_left" id="excerpt-padding-left" class="excerpt-padding-left-value" />';
+					$this->fptOptions[ 'excerpt' ][ 'padding_right' ] . '" name="excerpt_padding_right" id="excerpt-padding-right" class="excerpt-padding-right-value" />';
 		echo	' px</td>';
-		echo	'<td style="verical-align: middle">padding-left</td>';
+		echo	'<td style="verical-align: middle">padding-right</td>';
 		echo	'</tr>';
-
+		
 		echo	'<tr>';
 		echo	'<td style="width: 30%; verical-align: middle">';
 		echo	'<input type="text" size="7" maxlength="7" value="' . 
@@ -825,11 +903,11 @@ class fpwPostThumbnails {
 		echo	'<tr>';
 		echo	'<td style="width: 30%; verical-align: middle">';
 		echo	'<input type="text" size="7" maxlength="7" value="' . 
-					$this->fptOptions[ 'excerpt' ][ 'padding_right' ] . '" name="excerpt_padding_right" id="excerpt-padding-right" class="excerpt-padding-right-value" />';
+					$this->fptOptions[ 'excerpt' ][ 'padding_left' ] . '" name="excerpt_padding_left" id="excerpt-padding-left" class="excerpt-padding-left-value" />';
 		echo	' px</td>';
-		echo	'<td style="verical-align: middle">padding-right</td>';
+		echo	'<td style="verical-align: middle">padding-left</td>';
 		echo	'</tr>';
-		
+
 		echo	'<tr>';
 		echo	'<td style="width: 30%; verical-align: middle">';
 		echo	'<input type="text" size="7" maxlength="7" value="' . 
@@ -841,11 +919,11 @@ class fpwPostThumbnails {
 		echo	'<tr>';
 		echo	'<td style="width: 30%; verical-align: middle">';
 		echo	'<input type="text" size="7" maxlength="7" value="' . 
-					$this->fptOptions[ 'excerpt' ][ 'margin_left' ] . '" name="excerpt_margin_left" id="excerpt-margin-left" class="excerpt-margin-left-value" />';
+					$this->fptOptions[ 'excerpt' ][ 'margin_right' ] . '" name="excerpt_margin_right" id="excerpt-margin-right" class="excerpt-margin-right-value" />';
 		echo	' px</td>';
-		echo	'<td style="verical-align: middle">margin-left</td>';
+		echo	'<td style="verical-align: middle">margin-right</td>';
 		echo	'</tr>';
-
+		
 		echo	'<tr>';
 		echo	'<td style="width: 30%; verical-align: middle">';
 		echo	'<input type="text" size="7" maxlength="7" value="' . 
@@ -857,11 +935,11 @@ class fpwPostThumbnails {
 		echo	'<tr>';
 		echo	'<td style="width: 30%; verical-align: middle">';
 		echo	'<input type="text" size="7" maxlength="7" value="' . 
-					$this->fptOptions[ 'excerpt' ][ 'margin_right' ] . '" name="excerpt_margin_right" id="excerpt-margin-right" class="excerpt-margin-right-value" />';
+					$this->fptOptions[ 'excerpt' ][ 'margin_left' ] . '" name="excerpt_margin_left" id="excerpt-margin-left" class="excerpt-margin-left-value" />';
 		echo	' px</td>';
-		echo	'<td style="verical-align: middle">margin-right</td>';
+		echo	'<td style="verical-align: middle">margin-left</td>';
 		echo	'</tr>';
-		
+
 		echo	'</table>';
         
 		echo	'</div>';

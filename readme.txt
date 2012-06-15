@@ -4,7 +4,7 @@ Contributors: frankpw
 Donate link: http://fw2s.com/payments-and-donations/
 Tags: post thumbnails,enable,support,themes
 Requires at least: 3.3
-Tested up to: 3.4-RC2
+Tested up to: 3.4
 Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -26,8 +26,13 @@ If the theme displays thumbnails for both the content and excerpts I would not r
 
 == Screenshots ==
 1. Options Page
+1. Content - Preview
+1. Excerpt - Preview
 
 == Changelog ==
+
+= 1.0.3 =
+* Added preview for both content and excerpt
 
 = 1.0.2 =
 * Added copy between panels

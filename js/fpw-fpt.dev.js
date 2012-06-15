@@ -1,5 +1,12 @@
 //	FPW Post Thumbnails JS
 
+function isInArray(arr, obj) {
+    for(var i=0; i<arr.length; i++) {
+        if (arr[i] == obj) return true;
+    }
+    return false;
+}
+
 jQuery( document ).ready( function( $ ) {
 
 	//	replace contextual Help link
@@ -27,6 +34,21 @@ jQuery( document ).ready( function( $ ) {
 			vcml		= $( "#content-margin-left" ).attr( "value" );
 			vcmb		= $( "#content-margin-bottom" ).attr( "value" );
 			vcmr		= $( "#content-margin-right" ).attr( "value" );
+			$( ".wp-post-image-content" ).css( "width", vcwidth );
+			$( ".wp-post-image-content" ).css( "height", vcheight );
+			$( ".wp-post-image-content" ).css( "float", vcpos );
+			if ( isInArray( barr, 'content_border' ) ) {
+				$( ".wp-post-image-content" ).css( "border", "solid " + vcbwidth + "px " + vcbocol );
+				$( ".wp-post-image-content" ).css( "background-color", vcbacol );
+				$( ".wp-post-image-content" ).css( "border-radius", vcradius );
+				$( ".wp-post-image-content" ).css( "-moz-border-radius", vcradius );
+				$( ".wp-post-image-content" ).css( "-webkit-border-radius", vcradius );
+			} else {
+				$( ".wp-post-image-content" ).css( "border", "none 0px transparent" );
+				$( ".wp-post-image-content" ).css( "background-color", "transparent" );
+			}
+			$( ".wp-post-image-content" ).css( "padding", vcpt + "px " + vcpr + "px " + vcpb + "px " + vcpl + "px" );
+			$( ".wp-post-image-content" ).css( "margin", vcmt + "px " + vcmr + "px " + vcmb + "px " + vcml + "px" );
 			vewidth		= $( "#excerpt-width" ).attr( "value" );
 			veheight	= $( "#excerpt-height" ).attr( "value" );
 			vepos		= $( "#excerpt-position" ).find( ":selected" ).text();
@@ -42,6 +64,21 @@ jQuery( document ).ready( function( $ ) {
 			veml		= $( "#excerpt-margin-left" ).attr( "value" );
 			vemb		= $( "#excerpt-margin-bottom" ).attr( "value" );
 			vemr		= $( "#excerpt-margin-right" ).attr( "value" );
+			$( ".wp-post-image-excerpt" ).css( "width", vewidth );
+			$( ".wp-post-image-excerpt" ).css( "height", veheight );
+			$( ".wp-post-image-excerpt" ).css( "float", vepos );
+			if ( isInArray( barr, 'excerpt_border' ) ) {
+				$( ".wp-post-image-excerpt" ).css( "border", "solid " + vebwidth + "px " + vebocol );
+				$( ".wp-post-image-excerpt" ).css( "background-color", vebacol );
+				$( ".wp-post-image-excerpt" ).css( "border-radius", veradius );
+				$( ".wp-post-image-excerpt" ).css( "-moz-border-radius", veradius );
+				$( ".wp-post-image-excerpt" ).css( "-webkit-border-radius", veradius );
+			} else {
+				$( ".wp-post-image-excerpt" ).css( "border", "none 0px transparent" );
+				$( ".wp-post-image-excerpt" ).css( "background-color", "transparent" );
+			}
+			$( ".wp-post-image-excerpt" ).css( "padding", vept + "px " + vepr + "px " + vepb + "px " + vepl + "px" );
+			$( ".wp-post-image-excerpt" ).css( "margin", vemt + "px " + vemr + "px " + vemb + "px " + veml + "px" );
 			message_div.html( "<p><strong>" + fpw_fpt.wait_msg + "</strong></p>" ).load( fpw_fpt.ajaxurl, {
 				boxes:						barr,
 				content_width:				vcwidth,

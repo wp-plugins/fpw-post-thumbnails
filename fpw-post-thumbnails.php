@@ -3,7 +3,7 @@
 Plugin Name: FPW Post Thumbnails
 Description: Manages post thumbnails for themes not supporting them.
 Plugin URI: http://fw2s.com/my-plugins/fpw-post-thumbnails/
-Version: 1.0.2
+Version: 1.0.3
 Author: Frank P. Walentynowicz
 Author URI: http://fw2s.com/
 
@@ -39,11 +39,15 @@ function is_wp_version( $is_ver ) {
     return true;
 }
 
+//	exit if WP older than 3.3
 if ( ! is_wp_version( '3.3' ) ) 
-	wp_die( '<center>This version of <strong>FPW Post Thumbnails</strong> plugin ' . 
-			'requires WordPress version <strong>3.3 or higher</strong>!<br />' . 
-			'Cannot activate! Press <strong><em>Go back one page</em></strong> ' . 
-			'button of your browser.</center>');
+	wp_die( '<center>Cannot activate! <strong>FPW Post Thumbnails</strong> plugin ' . 
+			'requires WordPress version <strong>3.3 or higher</strong>!<br />&nbsp;<br />' . 
+			'<a style="border: solid 1px #000; padding: 5px 20px ' . 
+			'5px 20px; border-radius: 10px; -moz-border-radius: 10px; ' . 
+			'-webkit-border-radius: 10px; text-decoration: none; color: black; ' . 
+			'background-color: cyan;" href="/wp-admin/plugins.php" title="Go back to Installed plugins">' . 
+			'Back</a></center>' );
 
 
 $needClass = false;
@@ -62,6 +66,6 @@ if ( is_admin() ) {
 if ( $needClass ) {
 	global $fpw_PT;
 
-	$fpw_PT = new fpwPostThumbnails( dirname(__FILE__), '1.0.2' );
+	$fpw_PT = new fpwPostThumbnails( dirname(__FILE__), '1.0.3' );
 }
 ?>
