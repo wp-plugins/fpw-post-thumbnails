@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: FPW Post Thumbnails v1.0.2\n"
+"Project-Id-Version: FPW Post Thumbnails v1.0.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2012-06-10 16:30:38+0000\n"
+"PO-Revision-Date: 2012-06-15 08:23:51+0000\n"
 "Last-Translator: Frank P. Walentynowicz <frankpw@fw2s.com>\n"
 "Language-Team: Frank P. Walentynowicz <frankpw@fw2s.com>\n"
 "MIME-Version: 1.0\n"
@@ -21,13 +21,13 @@ msgstr ""
 
 #  fpw-fpt
 #: ajax/fptupdate.php:24
-#: classes/fpw-post-thumbnails-class.php:496
+#: classes/fpw-post-thumbnails-class.php:559
 #@ fpw-fpt
 msgid "Options updated successfully."
 msgstr "Zmiany ustawień zapisano pomyślnie."
 
 #: ajax/fptupdate.php:26
-#: classes/fpw-post-thumbnails-class.php:498
+#: classes/fpw-post-thumbnails-class.php:561
 #@ fpw-fpt
 msgid "No changes detected. Nothing to update."
 msgstr "Nie wykryto zmian w ustawieniach. Niczego nie zapisano."
@@ -38,84 +38,84 @@ msgid "Validation failed!"
 msgstr "Walidacja zawiodła!"
 
 #: ajax/language.php:9
-#: classes/fpw-post-thumbnails-class.php:508
+#: classes/fpw-post-thumbnails-class.php:571
 #@ fpw-fpt
 msgid "Language file for this version is not yet available."
 msgstr "Plik językowy dla tej wersji nie jest jeszcze dostępny."
 
 #: ajax/language.php:11
-#: classes/fpw-post-thumbnails-class.php:510
+#: classes/fpw-post-thumbnails-class.php:573
 #@ fpw-fpt
 msgid "Language file is already installed. Please reload this page."
 msgstr "Plik językowy jest już zainstalowany. Proszę odświeżyć stronę."
 
 #: ajax/language.php:17
-#: classes/fpw-post-thumbnails-class.php:516
+#: classes/fpw-post-thumbnails-class.php:579
 #@ fpw-fpt
 msgid "Language file downloaded successfully. It will be applied as soon as this page is reloaded."
 msgstr "Plik językowy pobrano pomyślnie. Będzie on zastosowany po odświeżeniu strony."
 
 #: classes/fpw-post-thumbnails-class.php:160
 #: classes/fpw-post-thumbnails-class.php:161
-#: classes/fpw-post-thumbnails-class.php:253
-#: classes/fpw-post-thumbnails-class.php:434
+#: classes/fpw-post-thumbnails-class.php:260
+#: classes/fpw-post-thumbnails-class.php:497
 #: help/fpthelp.php:29
 #@ fpw-fpt
 msgid "FPW Post Thumbnails"
-msgstr "Miniatury Wpisów FPW"
+msgstr "Ikony Wpisów FPW"
 
-#: classes/fpw-post-thumbnails-class.php:218
+#: classes/fpw-post-thumbnails-class.php:225
 #@ fpw-fpt
 msgid "Donate"
 msgstr "Wspomóż"
 
-#: classes/fpw-post-thumbnails-class.php:224
+#: classes/fpw-post-thumbnails-class.php:231
 #@ fpw-fpt
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: classes/fpw-post-thumbnails-class.php:247
+#: classes/fpw-post-thumbnails-class.php:254
 #@ fpw-fpt
 msgid "FPW Plugins"
 msgstr "Wtyczki FPW"
 
-#: classes/fpw-post-thumbnails-class.php:421
+#: classes/fpw-post-thumbnails-class.php:428
 #@ fpw-fpt
 msgid "You did not send any credentials!"
 msgstr "Nie wysłano danych uwierzytelniających"
 
-#: classes/fpw-post-thumbnails-class.php:424
+#: classes/fpw-post-thumbnails-class.php:431
 #@ fpw-fpt
 msgid "You did not send the right credentials!"
 msgstr "Dane uwierzytelniające są niewłaściwe!"
 
-#: classes/fpw-post-thumbnails-class.php:454
+#: classes/fpw-post-thumbnails-class.php:517
 #@ fpw-fpt
 msgid "write modified options to the database"
 msgstr "zapisz zaktualizowane ustawienia do bazy danych"
 
-#: classes/fpw-post-thumbnails-class.php:457
+#: classes/fpw-post-thumbnails-class.php:520
 #@ fpw-fpt
 msgid "Update Options"
 msgstr "Zapisz Ustawienia"
 
-#: classes/fpw-post-thumbnails-class.php:464
+#: classes/fpw-post-thumbnails-class.php:527
 #@ fpw-fpt
 msgid "load language file for your version"
 msgstr "załąduj plik językowy dla bieżącej wersji"
 
-#: classes/fpw-post-thumbnails-class.php:467
+#: classes/fpw-post-thumbnails-class.php:530
 #@ fpw-fpt
 msgid "Get Language File"
 msgstr "Pobierz Plik Językowy"
 
-#: classes/fpw-post-thumbnails-class.php:479
+#: classes/fpw-post-thumbnails-class.php:542
 #: help/fpthelp.php:43
 #@ fpw-fpt
 msgid "Remove plugin's data from database on uninstall"
 msgstr "Usuń dane wtyczki z bazy danych podczas usuwania wtyczki"
 
-#: classes/fpw-post-thumbnails-class.php:485
+#: classes/fpw-post-thumbnails-class.php:548
 #: help/fpthelp.php:45
 #@ fpw-fpt
 msgid "Add this plugin to the Admin Bar"
@@ -164,7 +164,7 @@ msgstr "featured images"
 #: help/fpthelp.php:21
 #@ fpw-fpt
 msgid "Some themes provide such support but do not display them."
-msgstr "Niektóre motywy zapewniają wspomaganie lecz nie wyświetlają miniatur."
+msgstr "Niektóre motywy zapewniają wspomaganie lecz nie wyświetlają ikon."
 
 #: help/fpthelp.php:22
 #@ fpw-fpt
@@ -174,12 +174,12 @@ msgstr "Mamy wtedy trzy alternatywne rozwiązania."
 #: help/fpthelp.php:28
 #@ fpw-fpt
 msgid "First is to find another theme supporting and displaying thumbnails, second - forget about thumbnails, and the third is to get our hands dirty. The last one requires modifications to the current theme's files ( not very elegant and practical as the next theme's upgrade will wipe out those modifications ) or at least creating a child theme."
-msgstr "Pierwszym jest znalezienie innego motywu wspomagającego miniatury, drugim jest zrezygnowanie z miniatur, a trzecim jest wykonanie pewnej pracy. Ostatnie wymaga modyfikacji plików motywu ( niezbyt eleganckie i niepraktyczne, biorąc pod uwagę, że kolejna aktualizacja motywu nadpisze nasze zmiany ) lub też utworzenia motywu-dziecka ( child theme )."
+msgstr "Pierwszym jest znalezienie innego motywu wspomagającego ikony, drugim jest zrezygnowanie z ikon, a trzecim jest wykonanie pewnej pracy. Ostatnie wymaga modyfikacji plików motywu ( niezbyt eleganckie i niepraktyczne, biorąc pod uwagę, że kolejna aktualizacja motywu nadpisze nasze zmiany ) lub też utworzenia motywu podrzędnego ( child theme )."
 
 #: help/fpthelp.php:31
 #@ fpw-fpt
 msgid "plugin makes these choices obsolete. It will add support for thumnails, display them, and give you more control over their appearance."
-msgstr "czyni te rozwiązania niepotrzebnymi. Doda ona wpomaganie miniatur, wyświetli je i umożliwi większą kontrolę ich wyglądu."
+msgstr "czyni te rozwiązania niepotrzebnymi. Doda ona wpomaganie ikon, wyświetli je i umożliwi większą kontrolę ich wyglądu."
 
 #: help/fpthelp.php:32
 #@ fpw-fpt
@@ -206,27 +206,25 @@ msgstr "jeśli włączone to łącznik do ustawień wtyczki zostanie dodany do P
 msgid "Panels"
 msgstr "Panele"
 
-#: classes/fpw-post-thumbnails-class.php:548
 #: help/fpthelp.php:50
 #@ fpw-fpt
 msgid "Thumbnails for Content enabled:"
-msgstr "Miniatury dla Pełnych Wpisów włączone:"
+msgstr "Ikony dla Wpisów włączone:"
 
 #: help/fpthelp.php:51
 #@ fpw-fpt
 msgid "if checked then enables thumbnails for contents"
-msgstr "jeśli zaznaczone to zostaną włączone miniatury dla pełnych wpisów"
+msgstr "jeśli zaznaczone to zostaną włączone ikony dla wpisów"
 
-#: classes/fpw-post-thumbnails-class.php:713
 #: help/fpthelp.php:52
 #@ fpw-fpt
 msgid "Thumbnails for Excerpt enabled:"
-msgstr "Miniatury dla Wypisów włączone:"
+msgstr "Ikony dla Wypisów włączone:"
 
 #: help/fpthelp.php:53
 #@ fpw-fpt
 msgid "if checked then enables thumbnails for excerpts"
-msgstr "jeśli zaznaczone to włączone zostaną miniatury dl wypisów"
+msgstr "jeśli zaznaczone to włączone zostaną ikony dla wypisów"
 
 #: help/fpthelp.php:54
 #@ fpw-fpt
@@ -236,17 +234,17 @@ msgstr "i"
 #: help/fpthelp.php:55
 #@ fpw-fpt
 msgid "width and height of the thumbnail"
-msgstr "szerokość i wysokość miniatury"
+msgstr "szerokość i wysokość ikony"
 
 #: help/fpthelp.php:56
 #@ fpw-fpt
 msgid "position of the thumbnail relative to the content ( excerpt )"
-msgstr "pozycja miniatury w stosunku do treści wpisu ( wypisu )"
+msgstr "pozycja ikony w stosunku do treści wpisu ( wypisu )"
 
 #: help/fpthelp.php:58
 #@ fpw-fpt
 msgid "if checked then the thumbnail will have a border and next four parameters will be applied"
-msgstr "jeśli zaznaczone to miniatura będzie miała ramkę a kolejne cztery parametry będą uwzględnione"
+msgstr "jeśli zaznaczone to ikona będzie miała ramkę a kolejne cztery parametry będą uwzględnione"
 
 #: help/fpthelp.php:61
 #@ fpw-fpt
@@ -266,7 +264,7 @@ msgstr "kolor ramki"
 #: help/fpthelp.php:64
 #@ fpw-fpt
 msgid "thumbnail's background color"
-msgstr "kolor tła miniatury"
+msgstr "kolor tła ikony"
 
 #: help/fpthelp.php:66
 #@ fpw-fpt
@@ -286,7 +284,7 @@ msgstr "Pytanie:"
 #: help/fpthelp.php:76
 #@ fpw-fpt
 msgid "Can I use this plugin if my theme supports and displays thumbnails?"
-msgstr "Czy mogę używać tej wtyczki, gdy motyw wspmaga i wyświetla miniatury?"
+msgstr "Czy mogę używać tej wtyczki, gdy motyw wspmaga i wyświetla ikony?"
 
 #: help/fpthelp.php:77
 #@ fpw-fpt
@@ -296,76 +294,102 @@ msgstr "Odpowiedź:"
 #: help/fpthelp.php:77
 #@ fpw-fpt
 msgid "If the theme displays thumbnails for both the content and excerpts I would not recommended it as you would get two thumbnails displayed. However I can imagine one exception. The theme displays thumbnails for full content but not for excerpts or the other way around. The plugin will display thumbnails for the part not being displayed by the theme not adding thumbnails to the other part."
-msgstr "Nie zalecałbym tego, jeśli motyw wyświetla miniatury dla pełnych wpisów i wypisów, ponieważ wyświetlane będą dwie miniatury. Jednak w sytuacji, gdy motyw wyświetla miniatury tylko dla jednego typu - pełne wpisy lub wypisy, wtyczka może być użyta do wyświetlania tych miniatur, których nie wyświetla motyw."
+msgstr "Nie zalecałbym tego, jeśli motyw wyświetla ikony dla wpisów i wypisów, ponieważ wyświetlane będą dwie ikony. Jednak w sytuacji, gdy motyw wyświetla ikony tylko dla jednego typu - wpisy lub wypisy, wtyczka może być użyta do wyświetlania tych ikon, których nie wyświetla motyw."
 
 #: help/fpthelp.php:81
 #@ fpw-fpt
 msgid "FAQ"
 msgstr "Często Zadawane Pytania"
 
-#: scripts/enqueuescripts.php:13
+#: scripts/enqueuescripts.php:14
 #@ fpw-fpt
 msgid "Please wait..."
 msgstr "Proszę czekać..."
 
-#: scripts/enqueuescripts.php:14
+#: scripts/enqueuescripts.php:15
 #@ fpw-fpt
 msgid "Help for FPW Post Thumbnails"
-msgstr "Pomoc dla wtyczki Miniatury Wpisów FPW"
+msgstr "Pomoc dla wtyczki Ikony Wpisów FPW"
 
-#: classes/fpw-post-thumbnails-class.php:324
-#: classes/fpw-post-thumbnails-class.php:346
-#: classes/fpw-post-thumbnails-class.php:365
+#: classes/fpw-post-thumbnails-class.php:331
+#: classes/fpw-post-thumbnails-class.php:353
+#: classes/fpw-post-thumbnails-class.php:372
 #@ fpw-fpt
 msgid "In Content panel field"
-msgstr "W panelu Pełnych Wpisów pole"
+msgstr "W panelu Wpisów pole"
 
-#: classes/fpw-post-thumbnails-class.php:326
 #: classes/fpw-post-thumbnails-class.php:333
+#: classes/fpw-post-thumbnails-class.php:340
 #@ fpw-fpt
 msgid "contains non-numeric characters."
 msgstr "zawiera znaki nienumeryczne."
 
-#: classes/fpw-post-thumbnails-class.php:331
-#: classes/fpw-post-thumbnails-class.php:354
-#: classes/fpw-post-thumbnails-class.php:373
+#: classes/fpw-post-thumbnails-class.php:338
+#: classes/fpw-post-thumbnails-class.php:361
+#: classes/fpw-post-thumbnails-class.php:380
 #@ fpw-fpt
 msgid "In Excerpt panel field"
 msgstr "W panelu Wypisów pole"
 
-#: classes/fpw-post-thumbnails-class.php:348
-#: classes/fpw-post-thumbnails-class.php:356
-#: classes/fpw-post-thumbnails-class.php:367
-#: classes/fpw-post-thumbnails-class.php:375
+#: classes/fpw-post-thumbnails-class.php:355
+#: classes/fpw-post-thumbnails-class.php:363
+#: classes/fpw-post-thumbnails-class.php:374
+#: classes/fpw-post-thumbnails-class.php:382
 #@ fpw-fpt
 msgid "is not vaild."
 msgstr "jest niepoprawne."
 
-#: classes/fpw-post-thumbnails-class.php:553
+#: classes/fpw-post-thumbnails-class.php:615
 #@ fpw-fpt
 msgid "copy all values to the right panel"
 msgstr "kopiuj wartości tego panelu do prawego panelu"
 
-#: classes/fpw-post-thumbnails-class.php:555
-#: classes/fpw-post-thumbnails-class.php:720
+#: classes/fpw-post-thumbnails-class.php:617
+#: classes/fpw-post-thumbnails-class.php:795
 #@ fpw-fpt
 msgid "Copy"
 msgstr "Kopiuj"
 
-#: classes/fpw-post-thumbnails-class.php:718
+#: classes/fpw-post-thumbnails-class.php:793
 #@ fpw-fpt
 msgid "copy all values to the left panel"
 msgstr "kopiuj wartości tego panelu do lewego panelu"
 
 #: ajax/fptcopyleft.php:6
-#: classes/fpw-post-thumbnails-class.php:535
+#: classes/fpw-post-thumbnails-class.php:598
 #@ fpw-fpt
 msgid "Values copied from the right to the left panel."
 msgstr "Przekopiowano prawy panel do lewego."
 
 #: ajax/fptcopyright.php:6
-#: classes/fpw-post-thumbnails-class.php:525
+#: classes/fpw-post-thumbnails-class.php:588
 #@ fpw-fpt
 msgid "Values copied from the left to the right panel."
 msgstr "Przekopiowano lewy panel to prawego."
+
+#: classes/fpw-post-thumbnails-class.php:619
+#@ fpw-fpt
+msgid "Content - Preview"
+msgstr "Wpis / Page - Podgląd"
+
+#: classes/fpw-post-thumbnails-class.php:620
+#: classes/fpw-post-thumbnails-class.php:798
+#@ fpw-fpt
+msgid "Preview"
+msgstr "Podgląd"
+
+#: classes/fpw-post-thumbnails-class.php:611
+#@ fpw-fpt
+msgid "Content thumbnails enabled:"
+msgstr "Ikony Wpisów włączone:"
+
+#: classes/fpw-post-thumbnails-class.php:789
+#@ fpw-fpt
+msgid "Excerpt thumbnails enabled:"
+msgstr "Ikony Wypisów włączone:"
+
+#: classes/fpw-post-thumbnails-class.php:797
+#@ fpw-fpt
+msgid "Excerpt - Preview"
+msgstr "Wypis - Podgląd"
 
