@@ -31,6 +31,9 @@ If the theme displays thumbnails for both the content and excerpts I would not r
 
 == Changelog ==
 
+= 1.0.4 =
+* Fixed incorrect values of border-radius in previews 
+
 = 1.0.3 =
 * Added preview for both content and excerpt
 

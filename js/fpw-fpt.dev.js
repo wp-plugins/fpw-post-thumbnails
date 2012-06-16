@@ -40,9 +40,9 @@ jQuery( document ).ready( function( $ ) {
 			if ( isInArray( barr, 'content_border' ) ) {
 				$( ".wp-post-image-content" ).css( "border", "solid " + vcbwidth + "px " + vcbocol );
 				$( ".wp-post-image-content" ).css( "background-color", vcbacol );
-				$( ".wp-post-image-content" ).css( "border-radius", vcradius );
-				$( ".wp-post-image-content" ).css( "-moz-border-radius", vcradius );
-				$( ".wp-post-image-content" ).css( "-webkit-border-radius", vcradius );
+				$( ".wp-post-image-content" ).css( "border-radius", vcradius + "px" );
+				$( ".wp-post-image-content" ).css( "-moz-border-radius", vcradius + "px" );
+				$( ".wp-post-image-content" ).css( "-webkit-border-radius", vcradius + "px" );
 			} else {
 				$( ".wp-post-image-content" ).css( "border", "none 0px transparent" );
 				$( ".wp-post-image-content" ).css( "background-color", "transparent" );
@@ -70,9 +70,9 @@ jQuery( document ).ready( function( $ ) {
 			if ( isInArray( barr, 'excerpt_border' ) ) {
 				$( ".wp-post-image-excerpt" ).css( "border", "solid " + vebwidth + "px " + vebocol );
 				$( ".wp-post-image-excerpt" ).css( "background-color", vebacol );
-				$( ".wp-post-image-excerpt" ).css( "border-radius", veradius );
-				$( ".wp-post-image-excerpt" ).css( "-moz-border-radius", veradius );
-				$( ".wp-post-image-excerpt" ).css( "-webkit-border-radius", veradius );
+				$( ".wp-post-image-excerpt" ).css( "border-radius", veradius + "px" );
+				$( ".wp-post-image-excerpt" ).css( "-moz-border-radius", veradius + "px" );
+				$( ".wp-post-image-excerpt" ).css( "-webkit-border-radius", veradius + "px" );
 			} else {
 				$( ".wp-post-image-excerpt" ).css( "border", "none 0px transparent" );
 				$( ".wp-post-image-excerpt" ).css( "background-color", "transparent" );
