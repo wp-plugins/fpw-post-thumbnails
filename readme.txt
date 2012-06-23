@@ -31,6 +31,10 @@ If the theme displays thumbnails for both the content and excerpts I would not r
 
 == Changelog ==
 
+= 1.0.5 =
+* Improved data entry validation
+* Loading JavaScript in the footer
+
 = 1.0.4 =
 * Fixed incorrect values of border-radius in previews 
 
