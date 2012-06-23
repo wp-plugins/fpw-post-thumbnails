@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: FPW Post Thumbnails v1.0.3\n"
+"Project-Id-Version: FPW Post Thumbnails v1.0.5\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2012-06-15 08:23:51+0000\n"
+"PO-Revision-Date: 2012-06-23 16:55:59+0000\n"
 "Last-Translator: Frank P. Walentynowicz <frankpw@fw2s.com>\n"
 "Language-Team: Frank P. Walentynowicz <frankpw@fw2s.com>\n"
 "MIME-Version: 1.0\n"
@@ -21,13 +21,13 @@ msgstr ""
 
 #  fpw-fpt
 #: ajax/fptupdate.php:24
-#: classes/fpw-post-thumbnails-class.php:559
+#: classes/fpw-post-thumbnails-class.php:586
 #@ fpw-fpt
 msgid "Options updated successfully."
 msgstr "Zmiany ustawień zapisano pomyślnie."
 
 #: ajax/fptupdate.php:26
-#: classes/fpw-post-thumbnails-class.php:561
+#: classes/fpw-post-thumbnails-class.php:588
 #@ fpw-fpt
 msgid "No changes detected. Nothing to update."
 msgstr "Nie wykryto zmian w ustawieniach. Niczego nie zapisano."
@@ -38,84 +38,84 @@ msgid "Validation failed!"
 msgstr "Walidacja zawiodła!"
 
 #: ajax/language.php:9
-#: classes/fpw-post-thumbnails-class.php:571
+#: classes/fpw-post-thumbnails-class.php:598
 #@ fpw-fpt
 msgid "Language file for this version is not yet available."
 msgstr "Plik językowy dla tej wersji nie jest jeszcze dostępny."
 
 #: ajax/language.php:11
-#: classes/fpw-post-thumbnails-class.php:573
+#: classes/fpw-post-thumbnails-class.php:600
 #@ fpw-fpt
 msgid "Language file is already installed. Please reload this page."
 msgstr "Plik językowy jest już zainstalowany. Proszę odświeżyć stronę."
 
 #: ajax/language.php:17
-#: classes/fpw-post-thumbnails-class.php:579
+#: classes/fpw-post-thumbnails-class.php:606
 #@ fpw-fpt
 msgid "Language file downloaded successfully. It will be applied as soon as this page is reloaded."
 msgstr "Plik językowy pobrano pomyślnie. Będzie on zastosowany po odświeżeniu strony."
 
-#: classes/fpw-post-thumbnails-class.php:160
 #: classes/fpw-post-thumbnails-class.php:161
-#: classes/fpw-post-thumbnails-class.php:260
-#: classes/fpw-post-thumbnails-class.php:497
+#: classes/fpw-post-thumbnails-class.php:162
+#: classes/fpw-post-thumbnails-class.php:287
+#: classes/fpw-post-thumbnails-class.php:524
 #: help/fpthelp.php:29
 #@ fpw-fpt
 msgid "FPW Post Thumbnails"
 msgstr "Ikony Wpisów FPW"
 
-#: classes/fpw-post-thumbnails-class.php:225
+#: classes/fpw-post-thumbnails-class.php:252
 #@ fpw-fpt
 msgid "Donate"
 msgstr "Wspomóż"
 
-#: classes/fpw-post-thumbnails-class.php:231
+#: classes/fpw-post-thumbnails-class.php:258
 #@ fpw-fpt
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: classes/fpw-post-thumbnails-class.php:254
+#: classes/fpw-post-thumbnails-class.php:281
 #@ fpw-fpt
 msgid "FPW Plugins"
 msgstr "Wtyczki FPW"
 
-#: classes/fpw-post-thumbnails-class.php:428
+#: classes/fpw-post-thumbnails-class.php:455
 #@ fpw-fpt
 msgid "You did not send any credentials!"
 msgstr "Nie wysłano danych uwierzytelniających"
 
-#: classes/fpw-post-thumbnails-class.php:431
+#: classes/fpw-post-thumbnails-class.php:458
 #@ fpw-fpt
 msgid "You did not send the right credentials!"
 msgstr "Dane uwierzytelniające są niewłaściwe!"
 
-#: classes/fpw-post-thumbnails-class.php:517
+#: classes/fpw-post-thumbnails-class.php:544
 #@ fpw-fpt
 msgid "write modified options to the database"
 msgstr "zapisz zaktualizowane ustawienia do bazy danych"
 
-#: classes/fpw-post-thumbnails-class.php:520
+#: classes/fpw-post-thumbnails-class.php:547
 #@ fpw-fpt
 msgid "Update Options"
 msgstr "Zapisz Ustawienia"
 
-#: classes/fpw-post-thumbnails-class.php:527
+#: classes/fpw-post-thumbnails-class.php:554
 #@ fpw-fpt
 msgid "load language file for your version"
 msgstr "załąduj plik językowy dla bieżącej wersji"
 
-#: classes/fpw-post-thumbnails-class.php:530
+#: classes/fpw-post-thumbnails-class.php:557
 #@ fpw-fpt
 msgid "Get Language File"
 msgstr "Pobierz Plik Językowy"
 
-#: classes/fpw-post-thumbnails-class.php:542
+#: classes/fpw-post-thumbnails-class.php:569
 #: help/fpthelp.php:43
 #@ fpw-fpt
 msgid "Remove plugin's data from database on uninstall"
 msgstr "Usuń dane wtyczki z bazy danych podczas usuwania wtyczki"
 
-#: classes/fpw-post-thumbnails-class.php:548
+#: classes/fpw-post-thumbnails-class.php:575
 #: help/fpthelp.php:45
 #@ fpw-fpt
 msgid "Add this plugin to the Admin Bar"
@@ -301,95 +301,110 @@ msgstr "Nie zalecałbym tego, jeśli motyw wyświetla ikony dla wpisów i wypis�
 msgid "FAQ"
 msgstr "Często Zadawane Pytania"
 
-#: scripts/enqueuescripts.php:14
+#: scripts/enqueuescripts.php:15
 #@ fpw-fpt
 msgid "Please wait..."
 msgstr "Proszę czekać..."
 
-#: scripts/enqueuescripts.php:15
+#: scripts/enqueuescripts.php:16
 #@ fpw-fpt
 msgid "Help for FPW Post Thumbnails"
 msgstr "Pomoc dla wtyczki Ikony Wpisów FPW"
 
-#: classes/fpw-post-thumbnails-class.php:331
-#: classes/fpw-post-thumbnails-class.php:353
-#: classes/fpw-post-thumbnails-class.php:372
+#: classes/fpw-post-thumbnails-class.php:358
+#: classes/fpw-post-thumbnails-class.php:380
+#: classes/fpw-post-thumbnails-class.php:400
 #@ fpw-fpt
 msgid "In Content panel field"
 msgstr "W panelu Wpisów pole"
 
-#: classes/fpw-post-thumbnails-class.php:333
-#: classes/fpw-post-thumbnails-class.php:340
+#: classes/fpw-post-thumbnails-class.php:360
+#: classes/fpw-post-thumbnails-class.php:367
 #@ fpw-fpt
 msgid "contains non-numeric characters."
 msgstr "zawiera znaki nienumeryczne."
 
-#: classes/fpw-post-thumbnails-class.php:338
-#: classes/fpw-post-thumbnails-class.php:361
-#: classes/fpw-post-thumbnails-class.php:380
+#: classes/fpw-post-thumbnails-class.php:365
+#: classes/fpw-post-thumbnails-class.php:388
+#: classes/fpw-post-thumbnails-class.php:407
 #@ fpw-fpt
 msgid "In Excerpt panel field"
 msgstr "W panelu Wypisów pole"
 
-#: classes/fpw-post-thumbnails-class.php:355
-#: classes/fpw-post-thumbnails-class.php:363
-#: classes/fpw-post-thumbnails-class.php:374
-#: classes/fpw-post-thumbnails-class.php:382
-#@ fpw-fpt
-msgid "is not vaild."
-msgstr "jest niepoprawne."
-
-#: classes/fpw-post-thumbnails-class.php:615
+#: classes/fpw-post-thumbnails-class.php:642
 #@ fpw-fpt
 msgid "copy all values to the right panel"
 msgstr "kopiuj wartości tego panelu do prawego panelu"
 
-#: classes/fpw-post-thumbnails-class.php:617
-#: classes/fpw-post-thumbnails-class.php:795
+#: classes/fpw-post-thumbnails-class.php:644
+#: classes/fpw-post-thumbnails-class.php:822
 #@ fpw-fpt
 msgid "Copy"
 msgstr "Kopiuj"
 
-#: classes/fpw-post-thumbnails-class.php:793
+#: classes/fpw-post-thumbnails-class.php:820
 #@ fpw-fpt
 msgid "copy all values to the left panel"
 msgstr "kopiuj wartości tego panelu do lewego panelu"
 
 #: ajax/fptcopyleft.php:6
-#: classes/fpw-post-thumbnails-class.php:598
+#: classes/fpw-post-thumbnails-class.php:625
 #@ fpw-fpt
 msgid "Values copied from the right to the left panel."
 msgstr "Przekopiowano prawy panel do lewego."
 
 #: ajax/fptcopyright.php:6
-#: classes/fpw-post-thumbnails-class.php:588
+#: classes/fpw-post-thumbnails-class.php:615
 #@ fpw-fpt
 msgid "Values copied from the left to the right panel."
 msgstr "Przekopiowano lewy panel to prawego."
 
-#: classes/fpw-post-thumbnails-class.php:619
+#: classes/fpw-post-thumbnails-class.php:646
 #@ fpw-fpt
 msgid "Content - Preview"
-msgstr "Wpis / Page - Podgląd"
+msgstr "Wpis - Podgląd"
 
-#: classes/fpw-post-thumbnails-class.php:620
-#: classes/fpw-post-thumbnails-class.php:798
+#: classes/fpw-post-thumbnails-class.php:647
+#: classes/fpw-post-thumbnails-class.php:825
 #@ fpw-fpt
 msgid "Preview"
 msgstr "Podgląd"
 
-#: classes/fpw-post-thumbnails-class.php:611
+#: classes/fpw-post-thumbnails-class.php:638
 #@ fpw-fpt
 msgid "Content thumbnails enabled:"
 msgstr "Ikony Wpisów włączone:"
 
-#: classes/fpw-post-thumbnails-class.php:789
+#: classes/fpw-post-thumbnails-class.php:816
 #@ fpw-fpt
 msgid "Excerpt thumbnails enabled:"
 msgstr "Ikony Wypisów włączone:"
 
-#: classes/fpw-post-thumbnails-class.php:797
+#: classes/fpw-post-thumbnails-class.php:824
 #@ fpw-fpt
 msgid "Excerpt - Preview"
 msgstr "Wypis - Podgląd"
+
+#: classes/fpw-post-thumbnails-class.php:186
+#@ fpw-fpt
+msgid "What's new in this version?"
+msgstr "Co nowego w tej wersji?"
+
+#: classes/fpw-post-thumbnails-class.php:187
+#@ fpw-fpt
+msgid "Improved data entry validation"
+msgstr "Ulepszona kontrola wprowadzanych danych"
+
+#: classes/fpw-post-thumbnails-class.php:188
+#@ fpw-fpt
+msgid "Loading JS scripts in the footer"
+msgstr "Ładowanie JavaScript w stopkę strony"
+
+#: classes/fpw-post-thumbnails-class.php:382
+#: classes/fpw-post-thumbnails-class.php:390
+#: classes/fpw-post-thumbnails-class.php:402
+#: classes/fpw-post-thumbnails-class.php:409
+#@ fpw-fpt
+msgid "must start with '#' charcter followed by 6 hexadecimal digits."
+msgstr "musi składać się ze znaku '#' i następujących po nim sześciu cyfr w systemie szesnastkowym"
 

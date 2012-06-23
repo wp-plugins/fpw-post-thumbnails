@@ -3,7 +3,7 @@
 Plugin Name: FPW Post Thumbnails
 Description: Manages post thumbnails for themes not supporting them.
 Plugin URI: http://fw2s.com/my-plugins/fpw-post-thumbnails/
-Version: 1.0.4
+Version: 1.0.5
 Author: Frank P. Walentynowicz
 Author URI: http://fw2s.com/
 
@@ -27,20 +27,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 if ( preg_match( '#' . basename(__FILE__) . '#', $_SERVER[ 'PHP_SELF' ] ) )  
 	die( "Direct access to this script is forbidden!" );
 
-// checks is WP is at least a certain version
-function is_wp_version( $is_ver ) {
-    $wp_ver = explode( '.', get_bloginfo( 'version' ) );
-    $is_ver = explode( '.', $is_ver );
-    for( $i=0; $i<=count( $is_ver ); $i++ )
-        if( !isset( $wp_ver[$i] ) ) array_push( $wp_ver, 0 );
- 
-    foreach( $is_ver as $i => $is_val )
-        if( $wp_ver[$i] < $is_val ) return false;
-    return true;
-}
+//	load FPW library
+if ( !function_exists( 'fpw_is_wp_version' ) )
+	require_once dirname(__FILE__) . '/lib/fpwlib.php';
 
-//	exit if WP older than 3.3
-if ( ! is_wp_version( '3.3' ) ) 
+//	quit if not wp 3.3 or higher
+if ( ! fpw_is_wp_version( '3.3' ) ) 
 	wp_die( '<center>Cannot activate! <strong>FPW Post Thumbnails</strong> plugin ' . 
 			'requires WordPress version <strong>3.3 or higher</strong>!<br />&nbsp;<br />' . 
 			'<a style="border: solid 1px #000; padding: 5px 20px ' . 
@@ -48,7 +40,6 @@ if ( ! is_wp_version( '3.3' ) )
 			'-webkit-border-radius: 10px; text-decoration: none; color: black; ' . 
 			'background-color: cyan;" href="/wp-admin/plugins.php" title="Go back to Installed plugins">' . 
 			'Back</a></center>' );
-
 
 $needClass = false;
 if ( is_admin() ) {
@@ -66,6 +57,6 @@ if ( is_admin() ) {
 if ( $needClass ) {
 	global $fpw_PT;
 
-	$fpw_PT = new fpwPostThumbnails( dirname(__FILE__), '1.0.4' );
+	$fpw_PT = new fpwPostThumbnails( dirname(__FILE__), '1.0.5' );
 }
 ?>

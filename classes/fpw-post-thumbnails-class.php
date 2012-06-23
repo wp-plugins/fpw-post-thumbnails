@@ -78,6 +78,7 @@ class fpwPostThumbnails {
 			add_action( 'admin_bar_menu', array( &$this, 'pluginToAdminBar' ), 1010 );
 	}
 	
+	//	add theme support for thumbnails
 	function enableThemeSupportForThumbnails() {
 		if ( !current_theme_supports( 'post-thumbnails' ) ) 
 			add_theme_support( 'post-thumbnails' );
@@ -163,6 +164,7 @@ class fpwPostThumbnails {
 							'fpw-post-thumbnails', array( &$this, 'fptSettings' ) );
 		
 		add_action( 'admin_enqueue_scripts', array( &$this, 'enqueueScripts' ) );
+		add_action( 'admin_enqueue_scripts', array( &$this, 'enqueuePointerScripts' ) );
 		add_action( 'load-' . $this->fptPage, array( &$this, 'fptHelp' ) );
 	}
 
@@ -172,7 +174,39 @@ class fpwPostThumbnails {
 			require_once $this->fptPath . '/scripts/enqueuescripts.php';
 	}
 	
-	//	contextual help for WordPress 3.3+
+	//	enqueue pointer scripts
+	function enqueuePointerScripts( $hook ) {
+		if ( $this->fptPage == $hook )
+			require_once $this->fptPath . '/scripts/enqueuepointerscripts.php';
+	}
+
+	// 	handle pointer
+	public function custom_print_footer_scripts() {
+		$pointer = 'fpwfpt' . str_replace( '.', '', $this->fptVersion );
+    	$pointerContent  = '<h3>' . esc_js( __( "What's new in this version?", 'fpw-fpt' ) ) . '</h3>';
+		$pointerContent .= '<li style="margin-left:25px;margin-top:20px;list-style:square">' . __( 'Improved data entry validation', 'fpw-fpt' ) . '</li>';
+		$pointerContent .= '<li style="margin-left:25px;list-style:square">' . __( 'Loading JS scripts in the footer', 'fpw-fpt' ) . '</li>';
+    	?>
+    	<script type="text/javascript">
+    	// <![CDATA[
+    		jQuery(document).ready( function($) {
+        		$('#fpt-settings-title').pointer({
+        			content: '<?php echo $pointerContent; ?>',
+        			position: 'top',
+            		close: function() {
+						jQuery.post( ajaxurl, {
+							pointer: '<?php echo $pointer; ?>',
+							action: 'dismiss-wp-pointer'
+						});
+            		}
+				}).pointer('open');
+			});
+    	// ]]>
+    	</script>
+    	<?php
+	}
+
+	//	contextual help
 	function fptHelp() {
 		require_once $this->fptPath . '/help/fpthelp.php';
 	}
@@ -345,7 +379,7 @@ class fpwPostThumbnails {
 				 !( '#' == substr( $p[ 'content_' . $col ], 0, 1 ) ) ) {
 				$response = __( 'In Content panel field', 'fpw-fpt' ) . ' "' . 
 							str_replace( '_', '-', $col ) . '" ' . 
-							__( 'is not vaild.', 'fpw-fpt' );
+							__( "must start with '#' charcter followed by 6 hexadecimal digits.", "fpw-fpt" );
 				break;
 			}
 
@@ -353,28 +387,28 @@ class fpwPostThumbnails {
 				 !( '#' == substr( $p[ 'excerpt_' . $col ], 0, 1 ) ) ) {
 				$response = __( 'In Excerpt panel field', 'fpw-fpt' ) . ' "' . 
 							str_replace( '_', '-', $col ) . '" ' . 
-							__( 'is not vaild.', 'fpw-fpt' );
+							__( "must start with '#' charcter followed by 6 hexadecimal digits.", "fpw-fpt" );
 				break;
 			}
 
-			$ac = str_split( $p[ 'content_' . $col ] );
-			$ae = str_split( $p[ 'excerpt_' . $col ] );
+			// $ac = str_split( $p[ 'content_' . $col ] );
+			$ac = substr( $p[ 'content_' . $col ], 1, strlen( $p[ 'content_' . $col ] ) - 1 );
+			// $ae = str_split( $p[ 'excerpt_' . $col ] );
+			$ae = substr( $p[ 'excerpt_' . $col ], 1, strlen( $p[ 'excerpt_' . $col ] ) - 1 );
 			
-			for ( $i = 1; $i < 7; $i++ ) 
-				if ( !in_array( $ac[ $i ], $matches ) ) {
-					$response = __( 'In Content panel field', 'fpw-fpt' ) . ' "' . 
-								str_replace( '_', '-', $col ) . '" ' . 
-								__( 'is not vaild.', 'fpw-fpt' );
-					break;
-				}
+			if ( !ctype_xdigit( $ac ) ) {
+				$response = __( 'In Content panel field', 'fpw-fpt' ) . ' "' . 
+							str_replace( '_', '-', $col ) . '" ' . 
+							__( "must start with '#' charcter followed by 6 hexadecimal digits.", "fpw-fpt" );
+				break;
+			}
 
-			for ( $i = 1; $i < 7; $i++ ) 
-				if ( !in_array( $ae[ $i ], $matches ) ) {
-					$response = __( 'In Excerpt panel field', 'fpw-fpt' ) . ' "' . 
-								str_replace( '_', '-', $col ) . '" ' . 
-								__( 'is not vaild.', 'fpw-fpt' );
-					break;
-				}			
+			if ( !ctype_xdigit( $ae ) ) {
+				$response = __( 'In Excerpt panel field', 'fpw-fpt' ) . ' "' . 
+							str_replace( '_', '-', $col ) . '" ' . 
+							__( "must start with '#' charcter followed by 6 hexadecimal digits.", "fpw-fpt" );
+				break;
+			}
 		}
 		
 		return $response;
