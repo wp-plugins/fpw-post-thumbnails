@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the FPW Post Thumbnails package.
 msgid ""
 msgstr ""
-"Project-Id-Version: FPW Post Thumbnails 1.0.5\n"
+"Project-Id-Version: FPW Post Thumbnails 1.0.6\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/fpw-post-thumbnails\n"
-"POT-Creation-Date: 2012-06-23 17:09:20+00:00\n"
+"POT-Creation-Date: 2012-06-27 10:34:20+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,19 +12,19 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: ajax/fptcopyleft.php:6 classes/fpw-post-thumbnails-class.php:625
+#: ajax/fptcopyleft.php:6 classes/fpw-post-thumbnails-class.php:627
 msgid "Values copied from the right to the left panel."
 msgstr ""
 
-#: ajax/fptcopyright.php:6 classes/fpw-post-thumbnails-class.php:615
+#: ajax/fptcopyright.php:6 classes/fpw-post-thumbnails-class.php:617
 msgid "Values copied from the left to the right panel."
 msgstr ""
 
-#: ajax/fptupdate.php:24 classes/fpw-post-thumbnails-class.php:586
+#: ajax/fptupdate.php:24 classes/fpw-post-thumbnails-class.php:588
 msgid "Options updated successfully."
 msgstr ""
 
-#: ajax/fptupdate.php:26 classes/fpw-post-thumbnails-class.php:588
+#: ajax/fptupdate.php:26 classes/fpw-post-thumbnails-class.php:590
 msgid "No changes detected. Nothing to update."
 msgstr ""
 
@@ -32,140 +32,138 @@ msgstr ""
 msgid "Validation failed!"
 msgstr ""
 
-#: ajax/language.php:9 classes/fpw-post-thumbnails-class.php:598
+#: ajax/language.php:9 classes/fpw-post-thumbnails-class.php:600
 msgid "Language file for this version is not yet available."
 msgstr ""
 
-#: ajax/language.php:11 classes/fpw-post-thumbnails-class.php:600
+#: ajax/language.php:11 classes/fpw-post-thumbnails-class.php:602
 msgid "Language file is already installed. Please reload this page."
 msgstr ""
 
-#: ajax/language.php:17 classes/fpw-post-thumbnails-class.php:606
+#: ajax/language.php:17 classes/fpw-post-thumbnails-class.php:608
 msgid ""
 "Language file downloaded successfully. It will be applied as soon as this "
 "page is reloaded."
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (FPW Post Thumbnails 1.0.5)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (FPW Post Thumbnails 1.0.6)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: classes/fpw-post-thumbnails-class.php:161
-#: classes/fpw-post-thumbnails-class.php:162
-#: classes/fpw-post-thumbnails-class.php:287
-#: classes/fpw-post-thumbnails-class.php:524 help/fpthelp.php:29
+#: classes/fpw-post-thumbnails-class.php:163
+#: classes/fpw-post-thumbnails-class.php:164
+#: classes/fpw-post-thumbnails-class.php:289
+#: classes/fpw-post-thumbnails-class.php:526 help/fpthelp.php:29
 msgid "FPW Post Thumbnails"
 msgstr ""
 
-#: classes/fpw-post-thumbnails-class.php:186
+#: classes/fpw-post-thumbnails-class.php:188
 msgid "What's new in this version?"
 msgstr ""
 
-#: classes/fpw-post-thumbnails-class.php:187
-msgid "Improved data entry validation"
+#: classes/fpw-post-thumbnails-class.php:190
+msgid ""
+"Added check to prevent activation if FPW Category Thumbnails plugin with "
+"bundled FPW Post Thumbnails is installed and active"
 msgstr ""
 
-#: classes/fpw-post-thumbnails-class.php:188
-msgid "Loading JS scripts in the footer"
-msgstr ""
-
-#: classes/fpw-post-thumbnails-class.php:252
+#: classes/fpw-post-thumbnails-class.php:254
 msgid "Donate"
 msgstr ""
 
-#: classes/fpw-post-thumbnails-class.php:258
+#: classes/fpw-post-thumbnails-class.php:260
 msgid "Settings"
 msgstr ""
 
-#: classes/fpw-post-thumbnails-class.php:281
+#: classes/fpw-post-thumbnails-class.php:283
 msgid "FPW Plugins"
 msgstr ""
 
-#: classes/fpw-post-thumbnails-class.php:358
-#: classes/fpw-post-thumbnails-class.php:380
-#: classes/fpw-post-thumbnails-class.php:400
+#: classes/fpw-post-thumbnails-class.php:360
+#: classes/fpw-post-thumbnails-class.php:382
+#: classes/fpw-post-thumbnails-class.php:402
 msgid "In Content panel field"
 msgstr ""
 
-#: classes/fpw-post-thumbnails-class.php:360
-#: classes/fpw-post-thumbnails-class.php:367
+#: classes/fpw-post-thumbnails-class.php:362
+#: classes/fpw-post-thumbnails-class.php:369
 msgid "contains non-numeric characters."
 msgstr ""
 
-#: classes/fpw-post-thumbnails-class.php:365
-#: classes/fpw-post-thumbnails-class.php:388
-#: classes/fpw-post-thumbnails-class.php:407
+#: classes/fpw-post-thumbnails-class.php:367
+#: classes/fpw-post-thumbnails-class.php:390
+#: classes/fpw-post-thumbnails-class.php:409
 msgid "In Excerpt panel field"
 msgstr ""
 
-#: classes/fpw-post-thumbnails-class.php:382
-#: classes/fpw-post-thumbnails-class.php:390
-#: classes/fpw-post-thumbnails-class.php:402
-#: classes/fpw-post-thumbnails-class.php:409
+#: classes/fpw-post-thumbnails-class.php:384
+#: classes/fpw-post-thumbnails-class.php:392
+#: classes/fpw-post-thumbnails-class.php:404
+#: classes/fpw-post-thumbnails-class.php:411
 msgid "must start with '#' charcter followed by 6 hexadecimal digits."
 msgstr ""
 
-#: classes/fpw-post-thumbnails-class.php:455
+#: classes/fpw-post-thumbnails-class.php:457
 msgid "You did not send any credentials!"
 msgstr ""
 
-#: classes/fpw-post-thumbnails-class.php:458
+#: classes/fpw-post-thumbnails-class.php:460
 msgid "You did not send the right credentials!"
 msgstr ""
 
-#: classes/fpw-post-thumbnails-class.php:544
+#: classes/fpw-post-thumbnails-class.php:546
 msgid "write modified options to the database"
 msgstr ""
 
-#: classes/fpw-post-thumbnails-class.php:547
+#: classes/fpw-post-thumbnails-class.php:549
 msgid "Update Options"
 msgstr ""
 
-#: classes/fpw-post-thumbnails-class.php:554
+#: classes/fpw-post-thumbnails-class.php:556
 msgid "load language file for your version"
 msgstr ""
 
-#: classes/fpw-post-thumbnails-class.php:557
+#: classes/fpw-post-thumbnails-class.php:559
 msgid "Get Language File"
 msgstr ""
 
-#: classes/fpw-post-thumbnails-class.php:569 help/fpthelp.php:43
+#: classes/fpw-post-thumbnails-class.php:571 help/fpthelp.php:43
 msgid "Remove plugin's data from database on uninstall"
 msgstr ""
 
-#: classes/fpw-post-thumbnails-class.php:575 help/fpthelp.php:45
+#: classes/fpw-post-thumbnails-class.php:577 help/fpthelp.php:45
 msgid "Add this plugin to the Admin Bar"
 msgstr ""
 
-#: classes/fpw-post-thumbnails-class.php:638
+#: classes/fpw-post-thumbnails-class.php:640
 msgid "Content thumbnails enabled:"
 msgstr ""
 
-#: classes/fpw-post-thumbnails-class.php:642
+#: classes/fpw-post-thumbnails-class.php:644
 msgid "copy all values to the right panel"
 msgstr ""
 
-#: classes/fpw-post-thumbnails-class.php:644
-#: classes/fpw-post-thumbnails-class.php:822
+#: classes/fpw-post-thumbnails-class.php:646
+#: classes/fpw-post-thumbnails-class.php:824
 msgid "Copy"
 msgstr ""
 
-#: classes/fpw-post-thumbnails-class.php:646
+#: classes/fpw-post-thumbnails-class.php:648
 msgid "Content - Preview"
 msgstr ""
 
-#: classes/fpw-post-thumbnails-class.php:647
-#: classes/fpw-post-thumbnails-class.php:825
+#: classes/fpw-post-thumbnails-class.php:649
+#: classes/fpw-post-thumbnails-class.php:827
 msgid "Preview"
 msgstr ""
 
-#: classes/fpw-post-thumbnails-class.php:816
+#: classes/fpw-post-thumbnails-class.php:818
 msgid "Excerpt thumbnails enabled:"
 msgstr ""
 
-#: classes/fpw-post-thumbnails-class.php:820
+#: classes/fpw-post-thumbnails-class.php:822
 msgid "copy all values to the left panel"
 msgstr ""
 
-#: classes/fpw-post-thumbnails-class.php:824
+#: classes/fpw-post-thumbnails-class.php:826
 msgid "Excerpt - Preview"
 msgstr ""
 
@@ -326,7 +324,8 @@ msgid "http://fw2s.com/my-plugins/fpw-post-thumbnails/"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "Manages post thumbnails for themes not supporting them."
+msgid ""
+"Manages post thumbnails for themes not supporting them. Standalone version."
 msgstr ""
 
 #. Author of the plugin/theme
