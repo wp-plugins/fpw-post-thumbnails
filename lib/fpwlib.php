@@ -1,9 +1,5 @@
 <?php
-//	prevent direct access
-if ( preg_match( '#' . basename(__FILE__) . '#', $_SERVER[ 'PHP_SELF' ] ) ) 
-	die( "Direct access to this script is forbidden!" );
-
-// checks is WP is at least a certain version
+//	checks is WP is at least a certain version
 function fpw_is_wp_version( $is_ver ) {
     $wp_ver = explode( '.', get_bloginfo( 'version' ) );
     $is_ver = explode( '.', $is_ver );

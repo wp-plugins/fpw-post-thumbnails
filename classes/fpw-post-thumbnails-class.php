@@ -8,7 +8,7 @@ class fpwPostThumbnails {
 	var	$fptOptions;
 	var	$fptPath;
 	var	$fptUrl;
-	var	$fptVersion;
+	var $fptVersion;
 	var	$fptPage;
 	var	$fptLocale;
 	var	$translationURL;
@@ -32,7 +32,9 @@ class fpwPostThumbnails {
 		
 		//	set version
 		$this->fptVersion = $version;
+		define( 'FPW_POST_THUMBNAILS_VERSION', $version );
 		
+		//	set locale
 		$this->fptLocale = get_locale();
 
 		//	set translation URL
@@ -184,8 +186,8 @@ class fpwPostThumbnails {
 	public function custom_print_footer_scripts() {
 		$pointer = 'fpwfpt' . str_replace( '.', '', $this->fptVersion );
     	$pointerContent  = '<h3>' . esc_js( __( "What's new in this version?", 'fpw-fpt' ) ) . '</h3>';
-		$pointerContent .= '<li style="margin-left:25px;margin-top:20px;list-style:square">' . __( 'Improved data entry validation', 'fpw-fpt' ) . '</li>';
-		$pointerContent .= '<li style="margin-left:25px;list-style:square">' . __( 'Loading JS scripts in the footer', 'fpw-fpt' ) . '</li>';
+		$pointerContent .= '<li style="margin-left:25px;margin-top:20px;list-style:square">' . 
+						   __( 'Added check to prevent activation if FPW Category Thumbnails plugin with bundled FPW Post Thumbnails is installed and active', 'fpw-fpt' ) . '</li>';
     	?>
     	<script type="text/javascript">
     	// <![CDATA[

@@ -31,6 +31,9 @@ If the theme displays thumbnails for both the content and excerpts I would not r
 
 == Changelog ==
 
+= 1.0.6 =
+* Added check to prevent activation if FPW Category Thumbnails plugin with bundled FPW Post Thumbnails is installed and active
+
 = 1.0.5 =
 * Improved data entry validation
 * Loading JavaScript in the footer

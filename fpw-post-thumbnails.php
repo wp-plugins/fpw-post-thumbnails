@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: FPW Post Thumbnails
-Description: Manages post thumbnails for themes not supporting them.
+Description: Manages post thumbnails for themes not supporting them. Standalone version.
 Plugin URI: http://fw2s.com/my-plugins/fpw-post-thumbnails/
-Version: 1.0.5
+Version: 1.0.6
 Author: Frank P. Walentynowicz
 Author URI: http://fw2s.com/
 
@@ -41,6 +41,19 @@ if ( ! fpw_is_wp_version( '3.3' ) )
 			'background-color: cyan;" href="/wp-admin/plugins.php" title="Go back to Installed plugins">' . 
 			'Back</a></center>' );
 
+//	quit if bundled FPW Post Thumbnails plugin is active
+if ( class_exists( 'fpwPostThumbnails' ) ) {
+	$ver = ( defined( 'FPW_POST_THUMBNAILS_VERSION' ) ) ? ' ' . FPW_POST_THUMBNAILS_VERSION : '';
+	wp_die( '<center>Cannot activate! <strong>' . 
+			'FPW Post Thumbnails' . $ver . '</strong> plugin bundled with <strong>FPW Category Thumbnails</strong> ' . 
+			'is installed and active!<br />&nbsp;<br />' . 
+			'<a style="border: solid 1px #000; padding: 5px 20px ' . 
+			'5px 20px; border-radius: 10px; -moz-border-radius: 10px; ' . 
+			'-webkit-border-radius: 10px; text-decoration: none; color: black; ' . 
+			'background-color: cyan;" href="/wp-admin/plugins.php" title="Go back to Installed plugins">' . 
+			'Back</a></center>' );
+}
+
 $needClass = false;
 if ( is_admin() ) {
 	//	back end
@@ -57,6 +70,6 @@ if ( is_admin() ) {
 if ( $needClass ) {
 	global $fpw_PT;
 
-	$fpw_PT = new fpwPostThumbnails( dirname(__FILE__), '1.0.5' );
+	$fpw_PT = new fpwPostThumbnails( dirname(__FILE__), '1.0.6' );
 }
 ?>
