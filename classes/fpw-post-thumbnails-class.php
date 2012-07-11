@@ -47,8 +47,14 @@ class fpwPostThumbnails {
 		//	get post thumbnails options
 		$this->fptOptions = get_option( 'fpw_post_thumbnails_options' );
 		
-		if ( ! is_array( $this->fptOptions ) )
+		if ( ! is_array( $this->fptOptions ) ) {
 			$this->fptOptions = $this->fptBuildOptions();
+		} else {
+			if ( !isset( $this->fptOptions[ 'content' ][ 'base' ] ) )
+				$this->fptOptions[ 'content' ][ 'base' ] = 'width';
+			if ( !isset( $this->fptOptions[ 'excerpt' ][ 'base' ] ) )
+				$this->fptOptions[ 'excerpt' ][ 'base' ] = 'width';
+		}
 		
 		//	actions and filters
 		add_action( 'after_setup_theme', array( &$this, 'enableThemeSupportForThumbnails' ), 999 ); 
@@ -95,6 +101,7 @@ class fpwPostThumbnails {
 						'enabled'			=> false,
 						'width'				=> 64,
 						'height'			=> 64,
+						'base'				=> 'width',
 						'position'			=> 'left',
 						'border'			=> false,
 						'border_width'		=> 1,
@@ -114,6 +121,7 @@ class fpwPostThumbnails {
 						'enabled'			=> false,
 						'width'				=> 64,
 						'height'			=> 64,
+						'base'				=> 'width',
 						'position'			=> 'left',
 						'border'			=> false,
 						'border_width'		=> 1,
@@ -186,8 +194,10 @@ class fpwPostThumbnails {
 	public function custom_print_footer_scripts() {
 		$pointer = 'fpwfpt' . str_replace( '.', '', $this->fptVersion );
     	$pointerContent  = '<h3>' . esc_js( __( "What's new in this version?", 'fpw-fpt' ) ) . '</h3>';
-		$pointerContent .= '<li style="margin-left:25px;margin-top:20px;list-style:square">' . 
-						   __( 'Added check to prevent activation if FPW Category Thumbnails plugin with bundled FPW Post Thumbnails is installed and active', 'fpw-fpt' ) . '</li>';
+		$pointerContent .= '<li style="margin-left:25px;margin-top:20px;margin-right:10px;list-style:square">' . 
+						   __( 'Added choice of base dimension for image scaling', 'fpw-fpt' ) . '</li>';
+		$pointerContent .= '<li style="margin-left:25px;margin-top:20px;margin-right:10px;list-style:square">' . 
+						   __( 'Removed built-in stylesheet for preview and added dynamic CSS instead', 'fpw-fpt' ) . '</li>';
     	?>
     	<script type="text/javascript">
     	// <![CDATA[
@@ -325,10 +335,6 @@ class fpwPostThumbnails {
 			'background_color'
 		);
 
-		$matches = array( '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 
-						  'A', 'B', 'C', 'D', 'E', 'F', 
-						  'a', 'b', 'c', 'd', 'e', 'f' );
-
 		$this->fptOptions[ 'clean' ] = ( isset( $p[ 'clean' ] ) ) ? true : false;
 		$this->fptOptions[ 'abar' ] = ( isset( $p[ 'abar' ] ) ) ? true : false;
 
@@ -339,6 +345,8 @@ class fpwPostThumbnails {
 				( isset( $p[ 'excerpt_' . $ck ] ) ) ? true : false;
 		}
 		
+		$this->fptOptions[ 'content' ][ 'base' ] = $p[ 'content_base' ];
+		$this->fptOptions[ 'excerpt' ][ 'base' ] = $p[ 'excerpt_base' ];
 		$this->fptOptions[ 'content' ][ 'position' ] = $p[ 'content_position' ];
 		$this->fptOptions[ 'excerpt' ][ 'position' ] = $p[ 'excerpt_position' ];
 			
@@ -422,6 +430,7 @@ class fpwPostThumbnails {
 			'enabled',
 			'width',
 			'height',
+			'base',
 			'position',
 			'border',
 			'border_radius',
@@ -463,61 +472,6 @@ class fpwPostThumbnails {
 
 		}
 
-		//	stylesheet for preview
-	    ?>
-    	<style type="text/css">
-    	<!--
-		.attachment-thumbnail-content,
-		.wp-post-image-content {
-    		float: <?php echo $this->fptOptions[ 'content' ][ 'position' ] ?>;
-    		padding-top: <?php echo $this->fptOptions[ 'content' ][ 'padding_top' ] ?>px;
-    		padding-left: <?php echo $this->fptOptions[ 'content' ][ 'padding_left' ] ?>px;
-    		padding-bottom: <?php echo $this->fptOptions[ 'content' ][ 'padding_bottom' ] ?>px;
-			padding-right: <?php echo $this->fptOptions[ 'content' ][ 'padding_right' ] ?>px;
-    		margin-top: <?php echo $this->fptOptions[ 'content' ][ 'margin_top' ] ?>px;
-    		margin-left: <?php echo $this->fptOptions[ 'content' ][ 'margin_left' ] ?>px;
-    		margin-bottom: <?php echo $this->fptOptions[ 'content' ][ 'margin_bottom' ] ?>px;
-    		margin-right: <?php echo $this->fptOptions[ 'content' ][ 'margin_right' ] ?>px;
-    		width: <?php echo $this->fptOptions[ 'content' ][ 'width' ] ?>px;
-		<?php
-    	if ( $this->fptOptions[ 'content' ][ 'border' ] ) {
-		?>
-        	background-color: <?php echo $this->fptOptions[ 'content' ][ 'background_color' ] ?>;
-        	border: <?php echo $this->fptOptions[ 'content' ][ 'border_width' ] ?>px solid <?php echo $this->fptOptions[ 'content' ][ 'border_color' ] ?>;
-        	border-radius: <?php echo $this->fptOptions[ 'content' ][ 'border_radius' ] ?>px;
-        	-moz-border-radius: <?php echo $this->fptOptions[ 'content' ][ 'border_radius' ] ?>px;
-        	-webkit-border-radius: <?php echo $this->fptOptions[ 'content' ][ 'border_radius' ] ?>px;
-		<?php	
-		}
-		?>
-		}
-		.attachment-thumbnail-excerpt,
-		.wp-post-image-excerpt {
-    		float: <?php echo $this->fptOptions[ 'excerpt' ][ 'position' ] ?>;
-    		padding-top: <?php echo $this->fptOptions[ 'excerpt' ][ 'padding_top' ] ?>px;
-    		padding-left: <?php echo $this->fptOptions[ 'excerpt' ][ 'padding_left' ] ?>px;
-    		padding-bottom: <?php echo $this->fptOptions[ 'excerpt' ][ 'padding_bottom' ] ?>px;
-			padding-right: <?php echo $this->fptOptions[ 'excerpt' ][ 'padding_right' ] ?>px;
-    		margin-top: <?php echo $this->fptOptions[ 'excerpt' ][ 'margin_top' ] ?>px;
-    		margin-left: <?php echo $this->fptOptions[ 'excerpt' ][ 'margin_left' ] ?>px;
-    		margin-bottom: <?php echo $this->fptOptions[ 'excerpt' ][ 'margin_bottom' ] ?>px;
-    		margin-right: <?php echo $this->fptOptions[ 'excerpt' ][ 'margin_right' ] ?>px;
-    		width: <?php echo $this->fptOptions[ 'excerpt' ][ 'width' ] ?>px;
-		<?php
-    	if ( $this->fptOptions[ 'excerpt' ][ 'border' ] ) {
-		?>
-        	background-color: <?php echo $this->fptOptions[ 'excerpt' ][ 'background_color' ] ?>;
-        	border: <?php echo $this->fptOptions[ 'excerpt' ][ 'border_width' ] ?>px solid <?php echo $this->fptOptions[ 'excerpt' ][ 'border_color' ] ?>;
-        	border-radius: <?php echo $this->fptOptions[ 'excerpt' ][ 'border_radius' ] ?>px;
-        	-moz-border-radius: <?php echo $this->fptOptions[ 'excerpt' ][ 'border_radius' ] ?>px;
-        	-webkit-border-radius: <?php echo $this->fptOptions[ 'excerp' ][ 'border_radius' ] ?>px;
-		<?php	
-		}
-		?>
-		}
-    	-->
-    	</style>
-    	<?php
 
 		//	HTML starts here
 		echo 	'<div class="wrap">';
@@ -646,12 +600,12 @@ class fpwPostThumbnails {
 				__( 'Copy', 'fpw-fpt' ) . ' &raquo;' . 
 				'" class="button-secondary fpt-submit"> <input alt="#TB_inline?height=300&width=400&inlineId=fptContentPreviev" ' . 
 				'title="' . __( 'Content - Preview', 'fpw-fpt' ) . '" class="thickbox button-secondary" ' . 
-				'type="button" value="' . __( 'Preview', 'fpw-fpt' ) . '" />' . 
+				'type="button" value="' . __( 'Preview', 'fpw-fpt' ) . '" id="content-preview" />' . 
 				'</h3>';
 				
 		echo	'<div id="fptContentPreviev" class="thickbox" style="display: none;">';
 		echo	'<div class="entry"><img class="wp-post-image-content" src="' . 
-				$this->fptUrl . '/images/Thumbs_Up.png" /><p style="text-align: justify">Lorem ipsum dolor sit amet consectetuer ' . 
+				$this->fptUrl . '/images/Frank.jpg" /><p style="text-align: justify">Lorem ipsum dolor sit amet consectetuer ' . 
 				'nunc enim laoreet pellentesque augue. Vestibulum Vivamus lacus dis ' . 
 				'Nunc semper laoreet platea Pellentesque ultrices metus. Tincidunt ' . 
 				'ridiculus nec Lorem orci metus hac Nam Lorem nascetur orci. Sed et ' . 
@@ -678,6 +632,19 @@ class fpwPostThumbnails {
 					$this->fptOptions[ 'content' ][ 'height' ] . '" name="content_height" id="content-height" class="content-height-value" />';
 		echo	' px</td>';
 		echo	'<td style="verical-align: middle">height</td>';
+		echo	'</tr>';
+		
+		echo	'<tr>';
+		echo	'<td style="width: 30%; verical-align: middle"><select name="content_base" id="content-base" style="width: 70px">' . 
+				'<option value="width"';
+		if ( 'width' == $this->fptOptions[ 'content' ][ 'base' ] ) 
+			echo ' selected="selected"'; 
+		echo	'>width</option>' . 
+				'<option value="height"';
+		if ( 'height' == $this->fptOptions[ 'content' ][ 'base' ] ) 
+			echo ' selected="selected"'; 
+		echo 	'>height</option></select></td>'; 
+		echo	'<td style="verical-align: middle">scaling base</td>';
 		echo	'</tr>';
 		
 		echo	'<tr>';
@@ -824,11 +791,11 @@ class fpwPostThumbnails {
 				__( 'Copy', 'fpw-fpt' ) . 
 				'" class="button-secondary fpt-submit"> <input alt="#TB_inline?height=300&width=400&inlineId=fptExcerptPreviev" ' . 
 				'title="' . __( 'Excerpt - Preview', 'fpw-fpt' ) . '" class="thickbox button-secondary" ' . 
-				'type="button" value="' . __( 'Preview', 'fpw-fpt' ) . '" /></h3>';
+				'type="button" value="' . __( 'Preview', 'fpw-fpt' ) . '" id="excerpt-preview" /></h3>';
 
 		echo	'<div id="fptExcerptPreviev" class="thickbox" style="display: none;">';
 		echo	'<div class="excerpt"><img class="wp-post-image-excerpt" src="' . 
-				$this->fptUrl . '/images/Thumbs_Up.png" /><p style="text-align: justify">Lorem ipsum dolor sit amet consectetuer ' . 
+				$this->fptUrl . '/images/Frank.jpg" /><p style="text-align: justify">Lorem ipsum dolor sit amet consectetuer ' . 
 				'nunc enim laoreet pellentesque augue. Vestibulum Vivamus lacus dis ' . 
 				'Nunc semper laoreet platea Pellentesque ultrices metus. Tincidunt ' . 
 				'ridiculus nec Lorem orci [...]</p>';
@@ -852,6 +819,19 @@ class fpwPostThumbnails {
 					$this->fptOptions[ 'excerpt' ][ 'height' ] . '" name="excerpt_height" id="excerpt-height" class="excerpt-height-value" />';
 		echo	' px</td>';
 		echo	'<td style="verical-align: middle">height</td>';
+		echo	'</tr>';
+		
+		echo	'<tr>';
+		echo	'<td style="width: 30%; verical-align: middle"><select name="excerpt_base" id="excerpt-base" style="width: 70px">' . 
+				'<option value="width"';
+		if ( 'width' == $this->fptOptions[ 'excerpt' ][ 'base' ] ) 
+			echo ' selected="selected"'; 
+		echo	'>width</option>' . 
+				'<option value="height"';
+		if ( 'height' == $this->fptOptions[ 'excerpt' ][ 'base' ] ) 
+			echo ' selected="selected"'; 
+		echo 	'>height</option></select></td>'; 
+		echo	'<td style="verical-align: middle">scaling base</td>';
 		echo	'</tr>';
 		
 		echo	'<tr>';

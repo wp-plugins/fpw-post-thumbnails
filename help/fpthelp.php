@@ -52,7 +52,8 @@
 					__( 'Thumbnails for Excerpt enabled:', 'fpw-fpt' ) . '</strong> - ' . 				
 					__( 'if checked then enables thumbnails for excerpts', 'fpw-fpt' ) . '</p>' . 
 					'<p style="text-align: justify;"><strong>width</strong> ' . __( 'and', 'fpw-fpt' ) . ' <strong>height</strong> - ' . 
-					__( 'width and height of the thumbnail', 'fpw-fpt' ) . '<br /><strong>float</strong> - ' . 
+					__( 'width and height of the thumbnail', 'fpw-fpt' ) . '<br /><strong>scaling base</strong> - ' . 
+					__( 'base dimension for scaling', 'fpw-fpt' ) . '<br /><strong>float</strong> - ' . 
 					__( 'position of the thumbnail relative to the content ( excerpt )', 'fpw-fpt' ) . 
 					'</p><p style="text-align: justify;"><strong>border</strong> - ' . 
 					__( 'if checked then the thumbnail will have a border and next four parameters will be applied', 'fpw-fpt') . 
