@@ -195,9 +195,7 @@ class fpwPostThumbnails {
 		$pointer = 'fpwfpt' . str_replace( '.', '', $this->fptVersion );
     	$pointerContent  = '<h3>' . esc_js( __( "What's new in this version?", 'fpw-fpt' ) ) . '</h3>';
 		$pointerContent .= '<li style="margin-left:25px;margin-top:20px;margin-right:10px;list-style:square">' . 
-						   __( 'Added choice of base dimension for image scaling', 'fpw-fpt' ) . '</li>';
-		$pointerContent .= '<li style="margin-left:25px;margin-top:20px;margin-right:10px;list-style:square">' . 
-						   __( 'Removed built-in stylesheet for preview and added dynamic CSS instead', 'fpw-fpt' ) . '</li>';
+						   __( 'Removed built-in front end stylesheet and added dynamic CSS instead', 'fpw-fpt' ) . '</li>';
     	?>
     	<script type="text/javascript">
     	// <![CDATA[

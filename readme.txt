@@ -31,6 +31,9 @@ If the theme displays thumbnails for both the content and excerpts I would not r
 
 == Changelog ==
 
+= 1.0.8 =
+* Removed built-in front end stylesheet and added dynamic CSS instead
+
 = 1.0.7 =
 * Added choice of base dimension for image scaling
 * Removed built-in stylesheet for preview and added dynamic CSS instead
