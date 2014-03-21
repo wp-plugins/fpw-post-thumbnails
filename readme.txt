@@ -12,7 +12,6 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Enables theme support for post thumbnails if the current theme does not provide it. And more...
 
 == Description ==
-
 **This is the last supported version of standalone FPW Post Thumbnails plugin. Now this plugin is embedded into FPW Category Thumbnails plugin.**
 
 There are many nice themes not providing any support for *post thumbnails* ( now called *featured images* ). Some themes provide such support but do not display them. Then we have three choices. First is to find another theme supporting and displaying thumbnails, second - forget about thumbnails, and the third is to get our hands dirty. The last one requires modifications to the current theme's files ( not very elegant and practical as the next theme's upgrade will wipe out those modifications ) or at least creating a child theme. **FPW Post Thumbnails** plugin makes these choices obsolete. It will add support for thumnails, display them, and give you more control over their appearance. And what's most important it will not modify the current theme in any way. 
